@@ -3,12 +3,8 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![D3.js](https://img.shields.io/badge/D3.js-F9A03C?style=flat-square&logo=d3&logoColor=white)
 ![Claude Code](https://img.shields.io/badge/Claude%20Code-D97757?style=flat-square&logo=claude&logoColor=white)
 ![IA agentique (9 agents)](https://img.shields.io/badge/IA%20agentique%20%289%20agents%29-D97757?style=flat-square&logo=anthropic&logoColor=white)
-![MCP](https://img.shields.io/badge/MCP-111111?style=flat-square&logo=modelcontextprotocol&logoColor=white)
 ![GitHub Actions (CI/CD)](https://img.shields.io/badge/GitHub%20Actions%20%28CI%2FCD%29-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 ![Tests](https://github.com/Heltondsm/crm-data-agents-ia/actions/workflows/ci.yml/badge.svg)
 

@@ -6,6 +6,7 @@
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 ![Claude](https://img.shields.io/badge/Agents%20IA-Claude-D97757?style=flat-square)
 ![d3.js](https://img.shields.io/badge/d3.js-F9A03C?style=flat-square&logo=d3dotjs&logoColor=white)
+![Tests](https://github.com/Heltondsm/crm-data-agents-ia/actions/workflows/ci.yml/badge.svg)
 
 Plus de 120 entreprises et contacts du secteur data à suivre, des dizaines d'offres publiées chaque jour sur plusieurs sites, des échanges sur LinkedIn et par mail. J'ai construit un CRM qui rassemble tout au même endroit : **une base PostgreSQL alimentée par des API, du code planifié pour ce qui est prévisible, et 9 agents IA spécialisés seulement là où il faut comprendre du texte.**
 
@@ -88,13 +89,14 @@ Un tableau par statut, des filtres par date de relance, une fiche détaillée mo
 - **Lire seulement la fin du journal LinkedIn** : l'API a un plafond d'appels par jour. Les scripts ne lisent que la fin du journal, là où se trouvent les nouveautés.
 - **Ne pas faire confiance à l'horaire des tâches planifiées** : GitHub lance parfois une tâche avec plusieurs heures de retard. La vérification passe donc plusieurs fois et ne fait rien quand il n'y a rien à faire.
 - **Un journal pour chaque passage** : chaque script et chaque agent écrit ce qu'il a lu, traité ou raté. Une source en panne est signalée, jamais présentée comme une journée calme.
+- **Intégration continue (CI/CD)** : à chaque push, GitHub Actions lance 5 tests automatiques : le code compile, le schéma crée bien les 7 tables avec la sécurité par ligne, la démo se reconstruit, et aucune donnée personnelle (mail, téléphone, clé) n'est publiée.
 - **Sécurité** : aucune clé dans le code, clés dans les secrets GitHub, sécurité par ligne activée sur toutes les tables, et aucune donnée réelle publiée ici.
 
 ---
 
 ## 🛠️ Technologies utilisées
 
-Python · PostgreSQL (Supabase, cloud) · SQL · GitHub Actions · API REST (LinkedIn, annuaire des entreprises) · JavaScript · d3.js · data visualisation · Claude Code · IA agentique (9 agents, LLM, connecteurs MCP)
+Python · PostgreSQL (Supabase, cloud) · SQL · GitHub Actions (CI/CD, tâches planifiées) · API REST (LinkedIn, annuaire des entreprises) · JavaScript · d3.js · data visualisation · Claude Code · IA agentique (9 agents, LLM, connecteurs MCP)
 
 ---
 
@@ -120,6 +122,8 @@ app/demo.html               la même application sur données fictives
 app/demo/                   génération des données fictives
 agents/                     rôle de chaque agent IA et modèle de consignes
 captures/                   vue d'ensemble, carte, pipeline, offres
+tests/                      tests automatiques lancés à chaque push
+.github/workflows/ci.yml    intégration continue (GitHub Actions)
 ```
 
 ---
@@ -133,6 +137,7 @@ captures/                   vue d'ensemble, carte, pipeline, offres
 
 ### IA agentique et automatisation
 - ✅ Système de 9 agents IA (LLM, connecteurs MCP), chacun avec un rôle et des garde-fous
+- ✅ Intégration continue : tests automatiques à chaque push avec GitHub Actions
 - ✅ Traitements planifiés avec GitHub Actions, clés dans les secrets
 - ✅ Partage du travail entre code déterministe et IA, justifié tâche par tâche
 - ✅ Agents IA encadrés : consignes écrites, garde-fous, journal de chaque passage

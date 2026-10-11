@@ -1,4 +1,4 @@
-# 🗂️ CRM data et agents IA : centraliser offres, contacts et échanges
+# 🗂️ CRM data et agents IA : centraliser opportunités, contacts et échanges
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white)

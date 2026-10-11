@@ -974,7 +974,7 @@ function renderMail(){
     sel.addEventListener("change",()=>{ m.row=S.rows.find(r=>r.url===sel.value)||null; });
     A.append(sel);
     if(m.kind==="refus") A.append(abtn("Passer en refus","coral",b=>applyMail(m,"refus",b)));
-    if(m.kind==="pos"){ A.append(abtn("Intéressé","primary",b=>applyMail(m,"pos",b))); A.append(abtn("Planifier le rendez-vous","",()=>{ if(m.row) $("#ag-ent").value=m.row.url; showTab("t-agenda"); })); A.append(abtn("Rédiger la réponse avec Claude","",()=>{ $("#ia-in").value=`Rédige ma réponse à ce mail (${m.from}, objet « ${m.subject} ») : « ${m.snippet} ». Objectif : caler un appel ou un entretien rapidement.`; showTab("t-ia"); })); }
+    if(m.kind==="pos"){ A.append(abtn("Intéressé","primary",b=>applyMail(m,"pos",b))); A.append(abtn("Planifier le rendez-vous","",()=>{ if(m.row) $("#ag-ent").value=m.row.url; showTab("t-agenda"); })); A.append(abtn("Rédiger la réponse avec Claude","",()=>{ $("#ia-in").value=`Rédige ma réponse à ce mail (${m.from}, objet « ${m.subject} ») : « ${m.snippet} ». Objectif : caler un appel ou un rendez-vous rapidement.`; showTab("t-ia"); })); }
     if(m.kind==="autre") A.append(abtn("C'est un refus","ghost",b=>applyMail(m,"refus",b)));
     A.append(abtn(S.mailState[m.id]?"Remettre à traiter":"Ignorer","ghost",()=>setMailState(m.id,S.mailState[m.id]?null:"ignore")));
     it.append(A); box.append(it); });
@@ -1001,7 +1001,7 @@ function renderAlerts(){
   items.forEach(([n,l,c,t])=>{ if(!n) return; const b=el("button","badge "+c,l); b.type="button"; b.style.fontSize="13px"; b.style.padding="5px 12px"; b.addEventListener("click",()=>showTab(t)); box.append(b); });
 }
 
-/* ---------- Opportunités : alertes mail + signaux d'achat (une entreprise qui recrute en data a un besoin data : offres Indeed) ---------- */
+/* ---------- Opportunités : alertes mail + signaux d'achat (une entreprise qui publie une annonce data a un besoin data : annonces Indeed) ---------- */
 function scoreOffer(o){
   let s=55; const why=[], risk=[];
   const t=nrm(o.titre+" "+(o.extrait||""));
@@ -1098,7 +1098,7 @@ async function searchIndeed(queries,b){
   S.indeed=out.filter(o=>fam.test(nrm(o.titre))); renderOffers(); renderAlerts(); if(b) b.disabled=false;
 }
 $("#of-go").addEventListener("click",e=>searchIndeed([$("#of-q").value||"Data Analyst"],e.target));
-$("#of-multi").addEventListener("click",e=>searchIndeed(["Data Analyst","Analyste BI","Power BI","Business Analyst data","Chargé d'études statistiques","Data Analyst junior"],e.target));
+$("#of-multi").addEventListener("click",e=>searchIndeed(["Data Analyst","Analyste BI","Power BI","Business Analyst data","Chargé d'études statistiques","Analyste reporting"],e.target));
 async function readAlerts(b){
   if(!S.mcp||!S.sample){ toast("Gmail ou Claude indisponible dans cette vue"); return; } if(b){ b.disabled=true; b.textContent="Lecture des alertes…"; }
   try{
@@ -1162,7 +1162,7 @@ function renderAgenda(){
   else if(!S.events.length){ box.append(el("div","empty",S.mcp?"Rien de ponctuel dans les 14 prochains jours.":"Connexion…")); }
   else { const by=d3.group(S.events,e=>(e.start&&(e.start.dateTime||e.start.date)||"").slice(0,10));
     [...by].sort((a,b)=>a[0].localeCompare(b[0])).forEach(([d,evs])=>{ const r=el("div","agday"); r.append(el("div","dd",frL(d)+(d===TODAY?" · auj.":""))); const c=el("div","agev");
-      evs.forEach(e=>{ const x=el("div"); const h=e.start&&e.start.dateTime?e.start.dateTime.slice(11,16):"journée"; const hl=/certif|entretien|appel|rdv|visio|onvue/i.test(e.summary||"");
+      evs.forEach(e=>{ const x=el("div"); const h=e.start&&e.start.dateTime?e.start.dateTime.slice(11,16):"journée"; const hl=/certif|rendez-vous|appel|rdv|visio|onvue/i.test(e.summary||"");
         x.append(el("span","h",h), el("span",hl?"hl":null,e.summary||"(sans titre)")); c.append(x); }); r.append(c); box.append(r); }); }
   const sel=$("#ag-ent"), cur=sel.value; sel.replaceChildren(new Option("— choisir —",""));
   active().slice().sort((a,b)=>{ const pa=/Intéressé|Rendez-vous/.test(a.statut)?0:1, pb=/Intéressé|Rendez-vous/.test(b.statut)?0:1; return pa-pb||(a.entreprise||"").localeCompare(b.entreprise||""); })
@@ -1176,7 +1176,7 @@ $("#ag-save").addEventListener("click",async()=>{
   const endT=`${iso(endD)}T${pad(endD.getHours())}:${pad(endD.getMinutes())}:00`;
   st.textContent="Création…";
   try{ await S.mcp.callTool(GCAL,"create_event",{summary:`📞 ${kind} · ${r.entreprise}`,startTime:`${d}T${h}:00`,endTime:endT,description:`${r.poste||""}\nContact : ${r.contacts||"—"}\n${$("#ag-note").value||""}\n\nPréparer : question d'ouverture, 4 questions à levier, pitch d'une minute, objections en AAC (onglet Assistant du cockpit).`,overrideReminders:[{method:"popup",minutes:1440},{method:"popup",minutes:60}]});
-    await update(r,{Statut:"Rendez-vous","date:Relance:start":addDays(d,1),"Prochaine action":`${kind} le ${fr(d)} à ${h} : remerciement sous 24 h ensuite`},null,"Entretien planifié et noté dans Notion");
+    await update(r,{Statut:"Rendez-vous","date:Relance:start":addDays(d,1),"Prochaine action":`${kind} le ${fr(d)} à ${h} : remerciement sous 24 h ensuite`},null,"Rendez-vous planifié et noté dans Notion");
     st.textContent="Créé dans Google Agenda."; S.mcp.invalidate(GCAL,"list_events").catch(()=>{}); }
   catch(e){ st.textContent=errText(e,"Google Agenda"); }
 });

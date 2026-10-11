@@ -89,7 +89,7 @@ Un tableau par statut, des filtres par date de relance, une fiche détaillée mo
 - **Lire seulement la fin du journal LinkedIn** : l'API a un plafond d'appels par jour. Les scripts ne lisent que la fin du journal, là où se trouvent les nouveautés.
 - **Ne pas faire confiance à l'horaire des tâches planifiées** : GitHub lance parfois une tâche avec plusieurs heures de retard. La vérification passe donc plusieurs fois et ne fait rien quand il n'y a rien à faire.
 - **Un journal pour chaque passage** : chaque script et chaque agent écrit ce qu'il a lu, traité ou raté. Une source en panne est signalée, jamais présentée comme une journée calme.
-- **Intégration continue (CI/CD)** : à chaque push, GitHub Actions lance 5 tests automatiques : le code compile, le schéma crée bien les 7 tables avec la sécurité par ligne, la démo se reconstruit, et aucune donnée personnelle (mail, téléphone, clé) n'est publiée.
+- **Intégration continue (CI/CD)** : à chaque push, GitHub Actions lance 6 tests automatiques : le code compile, le schéma crée bien les 7 tables avec la sécurité par ligne, la démo se reconstruit, aucune donnée personnelle (mail, téléphone, clé) n'est publiée, et le vocabulaire de la démo reste celui d'un CRM commercial.
 - **Sécurité** : aucune clé dans le code, clés dans les secrets GitHub, sécurité par ligne activée sur toutes les tables, et aucune donnée réelle publiée ici.
 
 ---
@@ -161,7 +161,7 @@ Data Analyst | 10 ans d'expérience business (retail et e-commerce)
 
 ## 🔗 Autres projets
 
-- [Pipeline de veille du marché de l'emploi](https://github.com/Heltondsm/job-market-pipeline), APIs France Travail et INSEE Sirene, 787 offres et 1 135 entreprises en 14 secondes
+- [Pipeline de collecte par API](https://github.com/Heltondsm/job-market-pipeline), France Travail et INSEE Sirene, 1 135 entreprises collectées en 14 secondes
 - [Portefeuille de 104 projets dans 52 pays](https://github.com/Heltondsm/powerbi-portefeuille-projets-rls), Power BI, sécurité au niveau des lignes sur 3 rôles
 - [Pipeline dbt : profils sociodémographiques](https://github.com/Heltondsm/dbt-demographics-pipeline), Snowflake et DuckDB, 26 tests, reproductible en une commande
 - [Aide à la décision pour une ONG de l'eau potable](https://github.com/Heltondsm/powerbi-aide-decision-eau-potable), Power BI, schéma en constellation, seuil de stabilité réglable

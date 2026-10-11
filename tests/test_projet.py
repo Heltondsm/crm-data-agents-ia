@@ -35,10 +35,27 @@ class TestDemo(unittest.TestCase):
 
     def test_aucune_donnee_personnelle_publiee(self):
         interdit = re.compile(r"@gmail\.com|\b0[67](?:[ .]?\d{2}){4}\b|supabase\.co|sb_secret_", re.I)
-        for f in list(RACINE.rglob("*.html")) + list(RACINE.rglob("*.py")) + list(RACINE.rglob("*.json")):
-            if "tests" in f.parts:
+        for f in RACINE.rglob("*"):
+            if f.is_dir() or ".git" in f.parts or "tests" in f.parts or f.suffix not in {".html", ".py", ".json", ".md", ".sql", ".yml"}:
                 continue
+            if f.name == "README.md" and f.parent == RACINE:
+                continue  # le contact de l'auteur y figure volontairement
             self.assertIsNone(interdit.search(f.read_text(errors="ignore")), f.name)
+
+
+class TestVocabulaire(unittest.TestCase):
+    def test_aucun_vocabulaire_hors_sujet(self):
+        """La démo est un CRM commercial : aucun terme de recrutement ne doit apparaître."""
+        interdit = re.compile(
+            r"candidat|recrut|\bemplois?\b|entretien|\bjunior|alternance|\bESN\b|WTTJ|HelloWork|Glassdoor|\bApec\b"
+            r"|salaire|bac ?\+ ?5|lettre de motivation|postul|\bCV\b|pr[ée]tentions",
+            re.I,
+        )
+        for f in RACINE.rglob("*"):
+            if f.is_dir() or ".git" in f.parts or "tests" in f.parts or f.suffix not in {".html", ".py", ".json", ".md", ".sql", ".yml"}:
+                continue
+            trouve = interdit.search(f.read_text(errors="ignore"))
+            self.assertIsNone(trouve, f"{f.relative_to(RACINE)} : « {trouve.group(0) if trouve else ''} »")
 
 
 if __name__ == "__main__":

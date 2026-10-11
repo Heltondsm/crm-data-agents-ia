@@ -16,7 +16,7 @@ Plus de 120 entreprises et contacts du secteur data à suivre, des dizaines d'op
 
 ## 📖 Contexte
 
-J'avais d'abord mesuré le marché de l'emploi data avec un pipeline Python ([job-market-pipeline](https://github.com/Heltondsm/job-market-pipeline) : 787 offres et 1 135 entreprises, API France Travail et INSEE Sirene). Restait à exploiter ces informations au quotidien.
+Ce projet prolonge un premier pipeline de collecte par API ([job-market-pipeline](https://github.com/Heltondsm/job-market-pipeline) : 1 135 entreprises collectées via les API France Travail et INSEE Sirene). Restait à exploiter ces informations au quotidien.
 
 Sans outil, elles se dispersent : une réponse reçue sur LinkedIn passe inaperçue, une relance part trop tard, une bonne opportunité se perd dans la masse. Le besoin : **une seule source de vérité**, à jour sans saisie manuelle, et une vue claire chaque matin.
 

@@ -23,9 +23,9 @@ SB_URL = os.environ.get("SUPABASE_URL", "").rstrip("/") + "/rest/v1/"
 SB_KEY = os.environ.get("SUPABASE_SECRET_KEY", "")
 AGENT = f"Sentinelle LinkedIn, {TODAY:%d/%m}"
 ACTIFS = ("À contacter", "Contacté", "À relancer", "Suivi flag")
-RECRUTEURS = re.compile(r"recrut|talent|business manager|business developer|ing[ée]nieur d.affaires|account manager|charg[ée] d.affaires|rh\b|human resources|staffing|sourcing", re.I)
+DECIDEURS = re.compile(r"directeur|directrice|director|head of|responsable|achats|procurement|cfo|cmo|ceo|fondat|founder|g[ée]rant", re.I)
 DATA = re.compile(r"data|bi\b|analytics|power bi|analyste|analyst", re.I)
-REFUS = re.compile(r"pas de besoin|pas de poste|ne recrut|malheureusement|pas pour le moment|pas d.opportunit|aucun poste", re.I)
+NEGATIF = re.compile(r"pas de besoin|pas int[ée]ress|malheureusement|pas pour le moment|pas de budget|d[ée]j[àa] [ée]quip|pas prioritaire", re.I)
 
 
 def log(*a):
@@ -184,14 +184,14 @@ def main():
                     alertes.append(f"✅ {nom} ({f['entreprise']}) a accepté : envoie le message 1 aujourd'hui")
                 else:
                     maj(f, {"notes": ((f.get("notes") or "") + f" [Connecté {TODAY:%d/%m}]").strip()}, "connecté")
-        elif crees < 15 and (RECRUTEURS.search(r.get("Position") or "") or DATA.search(r.get("Position") or "")):
+        elif crees < 15 and (DECIDEURS.search(r.get("Position") or "") or DATA.search(r.get("Position") or "")):
             ent = r.get("Company") or "?"
-            recr = bool(RECRUTEURS.search(r.get("Position") or ""))
+            decid = bool(DECIDEURS.search(r.get("Position") or ""))
             ville, lat, lon = geo_entreprise(ent) if ent != "?" else (None, None, None)
-            body = {"entreprise": ent, "poste": "Prospection directe" if recr else "Partenaire",
-                    "type": "🏢 Prospection directe" if recr else "🤝 Partenaire", "piste": "💼 Grands comptes", "canal": "LinkedIn",
+            body = {"entreprise": ent, "poste": "Prospection directe" if decid else "Partenaire",
+                    "type": "🏢 Prospection directe" if decid else "🤝 Partenaire", "piste": "💼 Grands comptes", "canal": "LinkedIn",
                     "statut": "À contacter", "relance": TODAY.isoformat(), "contacts": f"{nom} ({r.get('Position') or '?'})", "linkedin": r.get("URL"),
-                    "prochaine_action": "Nouvelle relation LinkedIn : choisis le message 1 dans le playbook (catégorie " + ("A ou B" if recr else "D, pair data") + ")",
+                    "prochaine_action": "Nouvelle relation LinkedIn : choisis le message 1 dans le playbook (catégorie " + ("décideur" if decid else "relais") + ")",
                     "notes": f"Fiche créée par la Sentinelle : relation acceptée le {co:%d/%m}." if co else "Fiche créée par la Sentinelle.",
                     "agent": AGENT, "notion_sync": False, "ville": ville, "lat": lat, "lon": lon}
             sb("POST", "fiches", "", body, "return=minimal")
@@ -250,9 +250,9 @@ def main():
         extrait = n["extrait"][:140].replace("\n", " ")
         if len(cand) == 1:
             f = cand[0]
-            neg = bool(REFUS.search(n["extrait"]))
+            neg = bool(NEGATIF.search(n["extrait"]))
             maj(f, {"statut": "Intéressé", "relance": TODAY.isoformat(),
-                    "prochaine_action": f"💬 Réponse LinkedIn du {quand:%d/%m} : " + ("à lire, elle semble négative : remercie et demande si tu peux revenir dans un mois" if neg else "propose un appel de 10 minutes"),
+                    "prochaine_action": f"💬 Réponse LinkedIn du {quand:%d/%m} : " + ("à lire, elle semble négative : remercie et propose de revenir au prochain trimestre" if neg else "propose un rendez-vous de 15 minutes"),
                     "notes": ((f.get("notes") or "") + f" [Réponse LinkedIn {quand:%d/%m} : « {extrait[:90]} »]").strip()}, "réponse reçue")
             sb("PATCH", "li_events", f"id=eq.{urllib.parse.quote(n['id'], safe='')}", {"fiche_id": f["id"], "traite": True}, "return=minimal")
             alertes.append(f"🔥 {f['entreprise']} ({f.get('contacts') or '?'}) t'a répondu sur LinkedIn : « {extrait} »")

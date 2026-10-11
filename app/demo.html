@@ -343,7 +343,7 @@ details.more .menu .btn:hover{background:var(--sunk)}
       <article class="card s8">
         <div class="ch"><div><h2>Assistant Claude</h2><div class="note">Il connaît ton profil, tes règles d'écriture et tout ton pipeline Notion. Il rédige, prépare et priorise.</div></div><button class="btn ghost" type="button" id="ia-clear">Nouvelle discussion</button></div>
         <div class="chat" id="chat"></div>
-        <div class="chatbox"><textarea id="ia-in" rows="3" placeholder="Ex. : écris la relance 2 pour cette ESN · prépare mon appel avec la recruteuse · analyse cette offre (colle le texte)…" aria-label="Message à Claude"></textarea><button class="btn primary" type="button" id="ia-send">Envoyer</button></div>
+        <div class="chatbox"><textarea id="ia-in" rows="3" placeholder="Ex. : écris la relance 2 pour ce prospect · prépare mon rendez-vous de demain · analyse cette opportunité (colle le texte)…" aria-label="Message à Claude"></textarea><button class="btn primary" type="button" id="ia-send">Envoyer</button></div>
       </article>
       <article class="card s4">
         <div class="ch"><div><h2>Raccourcis</h2><div class="note">Un clic, Claude s'en occupe.</div></div></div>
@@ -357,7 +357,7 @@ details.more .menu .btn:hover{background:var(--sunk)}
   <section role="tabpanel" id="p-agenda" aria-labelledby="t-agenda" hidden>
     <div class="bento">
       <article class="card s7"><div class="ch"><div><h2>Les 14 prochains jours</h2><div class="note">Ton Google Agenda, sans les routines (déjeuner, sport, révisions récurrentes).</div></div></div><div id="agenda-list"></div></article>
-      <article class="card s5"><div class="ch"><div><h2>Planifier un entretien</h2><div class="note">Crée l'événement dans Google Agenda (rappels la veille et 1 h avant) et passe la fiche Notion en « Entretien ».</div></div></div>
+      <article class="card s5"><div class="ch"><div><h2>Planifier un rendez-vous</h2><div class="note">Crée l'événement dans Google Agenda (rappels la veille et 1 h avant) et passe la fiche en « Rendez-vous ».</div></div></div>
         <div class="form">
           <label class="full">Entreprise<select id="ag-ent"></select></label>
           <label>Date<input type="date" id="ag-date"></label>
@@ -365,7 +365,7 @@ details.more .menu .btn:hover{background:var(--sunk)}
           <label>Durée<select id="ag-dur"><option value="15">15 min</option><option value="30" selected>30 min</option><option value="45">45 min</option><option value="60">1 h</option></select></label>
           <label>Type<select id="ag-kind"><option>Appel</option><option>Visio</option><option>Rendez-vous sur place</option></select></label>
           <label class="full">Note<input type="text" id="ag-note" placeholder="Nom de l'interlocuteur, lien visio…"></label>
-          <div class="full row"><button class="btn primary" type="button" id="ag-save">Créer l'entretien</button><span class="small muted" id="ag-status"></span></div>
+          <div class="full row"><button class="btn primary" type="button" id="ag-save">Créer le rendez-vous</button><span class="small muted" id="ag-status"></span></div>
         </div></article>
     </div>
   </section>
@@ -417,7 +417,7 @@ details.more .menu .btn:hover{background:var(--sunk)}
   <section role="tabpanel" id="p-marche" aria-labelledby="t-marche" hidden>
     <div class="kpis" id="mkt-kpis" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))"></div>
     <div class="bento">
-      <article class="card s7"><div class="ch"><div><h2>Ce que demandent les offres</h2><div class="note">Part des annonces Data Analyst Île-de-France qui citent la compétence. Le point creux = WTTJ (150 offres), le point plein = LinkedIn (191 offres).</div></div></div>
+      <article class="card s7"><div class="ch"><div><h2>Ce que demandent les prospects</h2><div class="note">Part des demandes qui citent chaque besoin, sur deux sources (exemple).</div></div></div>
         <div class="legend" style="margin-bottom:8px"><span><span class="sw" style="background:var(--teal)"></span>Tu l'as</span><span><span class="sw" style="background:var(--warn)"></span>En cours</span><span><span class="sw" style="background:var(--coral)"></span>Il te manque</span></div>
         <div class="chart" id="dumbbell"></div></article>
       <article class="card s5"><div class="ch"><div><h2>Où sont les postes</h2><div class="note">Offres LinkedIn par ville, placées sur la carte. Survole une bulle.</div></div></div><div class="chart" id="map"></div></article>
@@ -430,7 +430,7 @@ details.more .menu .btn:hover{background:var(--sunk)}
     <div class="bento">
       <article class="card s7"><div class="ch"><div><h2>Budget mensuel (démo)</h2><div class="note">Exemple de suivi : revenu disponible prévu, ligne rouge = seuil d'alerte.</div></div></div><div class="chart" id="budget"></div></article>
       <article class="card s5"><div class="ch"><div><h2>Mon plan</h2><div class="note">Coche une étape quand elle est faite.</div></div><span class="badge teal" id="ferrari-badge"></span></div><div class="steps" id="ferrari"></div></article>
-      <article class="card s6"><div class="ch"><div><h2>OpenClassrooms</h2><div class="note" id="oc-note"></div></div></div><div class="chart" id="oc-ring"></div><div class="steps" id="oc"></div></article>
+      <article class="card s6"><div class="ch"><div><h2>Formation</h2><div class="note" id="oc-note"></div></div></div><div class="chart" id="oc-ring"></div><div class="steps" id="oc"></div></article>
       <article class="card s6"><div class="ch"><div><h2>Toutes les échéances</h2><div class="note">Compte à rebours en jours.</div></div></div><div class="tl" id="deadlines"></div></article>
     </div>
   </section>
@@ -472,9 +472,9 @@ const Q_CLOSED = {data:{data_source_urls:[DS], query:`SELECT ${COLS} FROM "${DS}
 
 /* Données fixes : étude de marché (08-11/10), Mission Control, relevé LinkedIn */
 const TECH = [["SQL",38.7,60.7,"ok"],["Power BI",31.3,54.5,"ok"],["Anglais",38.7,49.7,"partiel"],["Python",26.0,37.7,"ok"],["IA / LLM",20.7,35.6,"ok"],["Excel",19.3,29.3,"ok"],["Statistiques",23.3,23.6,"ok"],["Azure / Fabric",6.7,20.9,"partiel"],["GCP / BigQuery",12.7,18.3,"manque"],["Tableau",16.7,16.8,"manque"],["Snowflake",13.3,8.9,"ok"],["dbt",11.3,8.9,"ok"],["Looker",6.0,8.9,"manque"],["SAS",8.0,6.3,"manque"],["Dataiku",6.7,5.8,"ok"]];
-const EXP = [["WTTJ",[21,20,16,22]],["LinkedIn",[15,22,6,45]]], EXP_K = ["2 ans ou moins","3 ans","4 ans","5 ans et plus"];
+const EXP = [["Site web",[21,20,16,22]],["Salon",[15,22,6,45]]], EXP_K = ["moins de 10 k€","10 à 30 k€","30 à 50 k€","plus de 50 k€"];
 const LIEUX = [["Paris",48.8566,2.3522,82],["Levallois-Perret",48.8946,2.2874,12],["Issy-les-Moulineaux",48.8245,2.27,12],["Boulogne-Billancourt",48.8397,2.2399,9],["Courbevoie",48.8973,2.2565,6],["Suresnes",48.8714,2.2290,5],["Neuilly-sur-Seine",48.8846,2.2697,5],["Vélizy",48.7826,2.1925,4],["Villejuif",48.7922,2.3634,3],["Montrouge",48.8163,2.3163,3],["Domicile",48.8566,2.3522,0]];
-const MKT = [["~50 %","des offres demandent un Bac+5"],["73-83 %","veulent 3 ans ou plus quand c'est précisé"],["6 %","cochées « premier emploi » sur LinkedIn"],["36-45 k€","salaire junior Île-de-France"]];
+const MKT = [["~50 %","des demandes citent Power BI (exemple)"],["73 %","viennent d'entreprises de plus de 50 salariés (exemple)"],["6 %","arrivent par recommandation (exemple)"],["15-45 k€","budget moyen d'un projet (exemple)"]];
 const DEADLINES = [["2027-01-15","Signature d'un contrat (exemple)","crit"],["2026-11-05","Relance des devis en cours (exemple)","warn"],["2026-11-20","Salon professionnel (exemple)","warn"],["2026-12-01","Revue du trimestre (exemple)","info"],["2026-12-15","Lancement de campagne (exemple)","info"],["2027-02-01","Renouvellement d'un contrat (exemple)","crit"]];
 const FERRARI = [["f0","Étape 1 de ton plan (exemple)",true],["f1","Étape 2",false],["f2","Étape 3",false],["f3","Étape 4",false]];
 const OC = [["Projet 1","Exemple de projet terminé","done"],["Projet 2","Exemple de projet terminé","done"],["Projet 3","Exemple de projet en cours","doing"],["Projet 4","Exemple de projet à venir","todo"]];
@@ -567,7 +567,7 @@ function drawFlow(){
   const gid="flowg"; const g=svg.append("defs").append("linearGradient").attr("id",gid).attr("x1",0).attr("x2",0).attr("y1",0).attr("y2",1);
   [[0,.26],[.25,.16],[.5,.08],[.75,.03],[1,0]].forEach(([o,a])=>g.append("stop").attr("offset",o).style("stop-color",css("var(--teal)")).style("stop-opacity",a));
   svg.append("g").attr("class","grid").attr("transform",`translate(${m.l},0)`).call(d3.axisLeft(y).ticks(4).tickSize(-(W-m.l-m.r)).tickFormat(""));
-  // zone annotée : semaine du démarchage ESN
+  // zone annotée : semaine de campagne
   const band=[P("2026-10-05"),P("2026-10-11")];
   if(band[0]>=x.domain()[0]){ svg.append("rect").attr("x",x(band[0])).attr("y",m.t).attr("width",Math.max(0,x(band[1])-x(band[0]))).attr("height",H-m.b-m.t).attr("fill",css("var(--sunk)")).attr("rx",6);
     svg.append("text").attr("x",Math.min(W-m.r,x(band[1]))).attr("text-anchor","end").attr("y",m.t-10).attr("fill",css("var(--muted)")).attr("font-size",11).text("Semaine de campagne"); }
@@ -830,7 +830,7 @@ function drawDumbbell(){
     g.append("circle").attr("cx",x(a)).attr("cy",y).attr("r",4.5).attr("fill",css("var(--card)")).attr("stroke",col(s)).attr("stroke-width",2);
     g.append("circle").attr("cx",x(a)).attr("cy",y).attr("r",5.5).attr("fill",col(s)).transition().duration(700).delay(i*25).attr("cx",x(b));
     g.append("text").attr("x",x(Math.max(a,b))+10).attr("y",y+4).attr("font-size",11.5).attr("font-family",css("--f-mono")).attr("fill",css("var(--muted)")).text(Math.round(b)+" %");
-    g.append("rect").attr("x",0).attr("y",y-rowH/2).attr("width",W).attr("height",rowH).attr("fill","transparent").on("pointerenter",()=>showTip(box,x(b)/W*box.clientWidth,y-6,n,`WTTJ ${a} % · LinkedIn ${b} %`)).on("pointerleave",()=>hideTip(box)); });
+    g.append("rect").attr("x",0).attr("y",y-rowH/2).attr("width",W).attr("height",rowH).attr("fill","transparent").on("pointerenter",()=>showTip(box,x(b)/W*box.clientWidth,y-6,n,`Site web ${a} % · Salon ${b} %`)).on("pointerleave",()=>hideTip(box)); });
 }
 function drawMap(){
   const box=$("#map"); if(!box.clientWidth) return; box.querySelectorAll("svg").forEach(n=>n.remove());
@@ -922,15 +922,15 @@ async function savePrefs(){ savePrefsLocal(); if(S.db){ try{ await S.db.doc("reg
    MODULES CONNECTÉS : Gmail, offres multi-sources, assistant Claude, agenda
    ===================================================================== */
 const GMAIL="Gmail", GCAL="Google Calendar", INDEED="Indeed";
-const PROFIL = `[À PERSONNALISER] Ton profil en quelques lignes : poste visé, expériences, projets chiffrés, compétences, zone géographique, prétentions, et tes règles d'écriture (ton, longueur des messages, ce qu'il ne faut jamais écrire). Ce texte est envoyé à Claude avec chaque demande.`;
-const ALERT_SENDERS='from:jobalerts-noreply@linkedin.com OR from:jobs-noreply@linkedin.com OR from:alerte@emails.hellowork.com OR from:noreply@glassdoor.com OR from:donotreply@match.indeed.com OR from:no-reply@apec.fr OR from:alert@indeed.com';
+const PROFIL = `[À PERSONNALISER] Ton offre en quelques lignes : ce que tu vends, à qui, tes références clients chiffrées, ta zone géographique, et tes règles d'écriture (ton, longueur des messages, ce qu'il ne faut jamais écrire). Ce texte est envoyé à Claude avec chaque demande.`;
+const ALERT_SENDERS='[À PERSONNALISER] adresses des alertes d\'appels d\'offres, par exemple from:alertes@plateforme-marches.fr';
 S.sample=null; S.mails=[]; S.mailState={}; S.mailFilter="todo"; S.veille={maj:null,offres:[]}; S.alertes={maj:null,offres:[]}; S.indeed=[]; S.analyses={}; S.chat=[]; S.events=[]; S.evErr=null;
 const nrm = s => (s||"").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 function needs(svc){ return `${svc} n'est pas encore autorisé pour cette page : ouvre le menu Autorisations de l'artefact, ou reconnecte ${svc} dans claude.ai → Paramètres → Connecteurs.`; }
 function errText(e,svc){ const c=e&&e.code; return c==="needs_reauth"?`Reconnecte ${svc} dans claude.ai → Paramètres → Connecteurs.`:c==="server_not_connected"?`Ajoute le connecteur ${svc} dans claude.ai → Paramètres → Connecteurs.`:c==="not_in_manifest"?needs(svc):c==="tool_error"?`${svc} a refusé : ${(e.message||"").slice(0,140)}`:`${svc} ne répond pas pour l'instant${c?" ("+c+")":""}.`; }
 
 /* ---------- Rapprochement entreprise ↔ fiche Notion ---------- */
-const STOP=new Set(["groupe","group","france","sas","the","les","des","via","mission","offre","apec","conseil","consulting","data","paris"]);
+const STOP=new Set(["groupe","group","france","sas","the","les","des","via","mission","offre","conseil","consulting","data","paris"]);
 function matchRow(text){
   const t=nrm(text); let best=null, bl=0;
   S.rows.forEach(r=>{ const toks=nrm(r.entreprise).replace(/\(.*?\)/g," ").split(/[^a-z0-9]+/).filter(w=>w.length>=3&&!STOP.has(w));
@@ -941,14 +941,14 @@ function matchRow(text){
 /* ---------- Gmail : réponses aux fiches ---------- */
 function classify(m){
   const t=nrm((m.subject||"")+" "+(m.snippet||""));
-  if(/(ne (pas )?donner suite|pas de suite favorable|suite favorable a votre|ne pas retenir|pas ete retenu|n.avons pas retenu|ne pourrons pas|regret|malheureusement|not been selected|unfortunately|other candidates|d.autres (candidats|profils)|plus adaptees au poste)/.test(t)) return "refus";
-  if(/(bien recu|bien ete recue|accusons|accuse de reception|avons recu votre|nous avons bien recu|thank you for (your )?(application|applying)|merci (pour|de) votre candidature|candidature (a ete )?envoyee|finalisez votre candidature|votre candidature est arrivee)/.test(t)) return "ack";
-  if(/(entretien|disponibilites|vos disponibilites|echanger|rendez-vous|rencontrer|interview|visio|appel|test technique|cas pratique|prochaine etape)/.test(t)) return "pos";
+  if(/(ne (pas )?donner suite|pas de suite favorable|suite favorable a votre|ne pas retenir|pas ete retenu|n.avons pas retenu|ne pourrons pas|regret|malheureusement|not been selected|unfortunately|autre prestataire|pas de budget|pas prioritaire)/.test(t)) return "refus";
+  if(/(bien recu|bien ete recue|accusons|accuse de reception|avons recu votre|nous avons bien recu|thank you for (your )?(message|request)|merci (pour|de) votre (message|demande)|demande (a ete )?enregistree)/.test(t)) return "ack";
+  if(/(disponibilites|vos disponibilites|echanger|rendez-vous|rencontrer|visio|appel|devis|proposition|prochaine etape)/.test(t)) return "pos";
   return "autre";
 }
 function watchMail(){
   if(!S.mcp) return;
-  const q={query:'newer_than:30d -in:sent -category:promotions -category:social -from:jobalerts-noreply@linkedin.com -from:alerte@emails.hellowork.com -from:noreply@glassdoor.com -from:donotreply@match.indeed.com (candidature OR application OR entretien OR recrutement OR "votre profil" OR "suite à")',pageSize:50};
+  const q={query:'newer_than:30d -in:sent -category:promotions -category:social (devis OR proposition OR rendez-vous OR "votre demande" OR "suite à")',pageSize:50};
   S.uMail&&S.uMail(); S.uMail=S.mcp.watchTool(GMAIL,"search_threads",q,ev=>{
     if(ev.type==="data"){ const th=(ev.result.payload&&ev.result.payload.threads)||[];
       S.mails=th.map(t=>{ const msgs=t.messages||[]; const m=msgs[msgs.length-1]||{}; const k=classify(m); return {id:t.id,date:(m.date||"").slice(0,10),from:(m.sender||"").replace(/<.*>/,"").trim(),subject:m.subject||"",snippet:(m.snippet||"").replace(/&#39;/g,"'").replace(/&amp;/g,"&"),url:t.viewUrl||m.viewUrl,kind:k,row:matchRow((m.sender||"")+" "+(m.subject||"")+" "+(m.snippet||""))}; });
@@ -974,7 +974,7 @@ function renderMail(){
     sel.addEventListener("change",()=>{ m.row=S.rows.find(r=>r.url===sel.value)||null; });
     A.append(sel);
     if(m.kind==="refus") A.append(abtn("Passer en refus","coral",b=>applyMail(m,"refus",b)));
-    if(m.kind==="pos"){ A.append(abtn("Intéressé","primary",b=>applyMail(m,"pos",b))); A.append(abtn("Planifier l'entretien","",()=>{ if(m.row) $("#ag-ent").value=m.row.url; showTab("t-agenda"); })); A.append(abtn("Rédiger la réponse avec Claude","",()=>{ $("#ia-in").value=`Rédige ma réponse à ce mail (${m.from}, objet « ${m.subject} ») : « ${m.snippet} ». Objectif : caler un appel ou un entretien rapidement.`; showTab("t-ia"); })); }
+    if(m.kind==="pos"){ A.append(abtn("Intéressé","primary",b=>applyMail(m,"pos",b))); A.append(abtn("Planifier le rendez-vous","",()=>{ if(m.row) $("#ag-ent").value=m.row.url; showTab("t-agenda"); })); A.append(abtn("Rédiger la réponse avec Claude","",()=>{ $("#ia-in").value=`Rédige ma réponse à ce mail (${m.from}, objet « ${m.subject} ») : « ${m.snippet} ». Objectif : caler un appel ou un entretien rapidement.`; showTab("t-ia"); })); }
     if(m.kind==="autre") A.append(abtn("C'est un refus","ghost",b=>applyMail(m,"refus",b)));
     A.append(abtn(S.mailState[m.id]?"Remettre à traiter":"Ignorer","ghost",()=>setMailState(m.id,S.mailState[m.id]?null:"ignore")));
     it.append(A); box.append(it); });
@@ -1001,19 +1001,19 @@ function renderAlerts(){
   items.forEach(([n,l,c,t])=>{ if(!n) return; const b=el("button","badge "+c,l); b.type="button"; b.style.fontSize="13px"; b.style.padding="5px 12px"; b.addEventListener("click",()=>showTab(t)); box.append(b); });
 }
 
-/* ---------- Offres : veille Mac + alertes mail + Indeed ---------- */
+/* ---------- Opportunités : alertes mail + signaux d'achat (une entreprise qui recrute en data a un besoin data : offres Indeed) ---------- */
 function scoreOffer(o){
   let s=55; const why=[], risk=[];
   const t=nrm(o.titre+" "+(o.extrait||""));
-  if(o.junior||/junior|debutant|jeune diplome/.test(t)){ s+=15; why.push("ouverte aux juniors"); }
+  if(o.urgent||/urgent|rapidement|des que possible/.test(t)){ s+=15; why.push("besoin rapide"); }
   if(o.pbi||/power ?bi/.test(t)){ s+=10; why.push("Power BI"); }
   if(o.sql||/\bsql\b/.test(t)){ s+=4; why.push("SQL"); }
   if(o.dbt||/\bdbt\b|snowflake/.test(t)){ s+=8; why.push("dbt / Snowflake"); }
-  if(/\b(retail|e-?commerce|grande distribution|crm|marketing|commerce de detail)\b/.test(t)){ s+=6; why.push("métier proche du commerce"); }
-  if(o.bac5){ s-=18; risk.push("Bac+5 demandé : passer par un contact"); }
-  if(o.exp!=null&&o.exp>=3){ s-=22; risk.push(o.exp+" ans d'expérience demandés"); } else if(o.exp!=null&&o.exp<=2){ s+=8; why.push(o.exp+" an(s) d'expérience"); }
-  if(o.anglais){ s-=6; risk.push("anglais courant"); }
-  if(/stage|alternan|apprenti/.test(nrm(o.titre))){ s-=40; risk.push("stage ou alternance"); }
+  if(/\b(retail|e-?commerce|grande distribution|crm|marketing|commerce de detail)\b/.test(t)){ s+=6; why.push("secteur déjà connu"); }
+  if(o.petitBudget){ s-=18; risk.push("budget faible : qualifier d'abord"); }
+  if(o.delai!=null&&o.delai<=7){ s-=22; risk.push("délai de "+o.delai+" jours"); } else if(o.delai!=null&&o.delai>=30){ s+=8; why.push("délai confortable"); }
+  if(o.horsZone){ s-=6; risk.push("hors zone"); }
+  if(/sous-traitance|regie|benevole/.test(nrm(o.titre))){ s-=40; risk.push("hors périmètre"); }
   if(/senior|confirme|lead|manager|head/.test(nrm(o.titre))){ s-=25; risk.push("poste confirmé"); }
   const age=o.date?-diffDays(o.date.slice(0,10)):null; if(age!=null&&age<=1){ s+=8; why.push("publiée il y a moins de 48 h"); } else if(age!=null&&age>14){ s-=10; risk.push("publiée il y a "+age+" jours"); }
   o.score=Math.max(0,Math.min(100,Math.round(s))); o.why=why; o.risk=risk;
@@ -1039,7 +1039,7 @@ function renderOfferFilters(L){
 function offerCard(o,sibs){
   const it=el("article","item offer"); it.append(el("div","score "+(o.score>=65?"g":o.score>=45?"o":"r"),String(o.score)));
   const body=el("div"); body.style.display="grid"; body.style.gap="7px"; body.style.minWidth="0";
-  const h=el("div","head"), L2=el("div"); L2.append(el("span","who",o.titre)); L2.append(el("div","small muted",[o.entreprise,o.lieu,o.date?fr(String(o.date).slice(0,10)):"",o.candidats||""].filter(Boolean).join(" · ")));
+  const h=el("div","head"), L2=el("div"); L2.append(el("span","who",o.titre)); L2.append(el("div","small muted",[o.entreprise,o.lieu,o.date?fr(String(o.date).slice(0,10)):"",o.budget||""].filter(Boolean).join(" · ")));
   const R=el("div","row"); R.append(el("span","badge teal",o.src)); if(o.inPipe) R.append(el("span","badge","dans le pipeline")); h.append(L2,R); body.append(h);
   const chips=el("div","meta"); o.why.slice(0,3).forEach(w=>chips.append(el("span","badge up",w))); o.risk.slice(0,2).forEach(w=>chips.append(el("span","badge warn",w))); if(chips.childNodes.length) body.append(chips);
   const an=S.analyses[o.id||o.url]; if(an) body.append(analysisBox(an));
@@ -1071,7 +1071,7 @@ function analysisBox(an){ const d=el("div","analysis"); d.append(el("div",null,"
   if(an.message){ const m=el("div","msg",an.message); d.append(m); const r=el("div","row"); r.append(abtn("Copier le message","",()=>copy(an.message))); d.append(r); } return d; }
 async function addOffer(o,b){
   if(!S.mcp){ toast("Base indisponible"); return; } b.disabled=true;
-  const props={Entreprise:o.entreprise||"?",Poste:o.titre,Type:"📥 Entrant",Piste:"💼 Grands comptes",Canal:/LinkedIn/.test(o.src)?"LinkedIn":/Hello/.test(o.src)?"HelloWork":"Autre",Statut:"À contacter","date:Relance:start":TODAY,"Prochaine action":`Postuler (score ${o.score}/100) et chercher le recruteur ou le futur manager`,"Notes":`Repérée dans le cockpit (${o.src}). Points forts : ${o.why.join(", ")||"—"}. Vigilance : ${o.risk.join(", ")||"—"}.`};
+  const props={Entreprise:o.entreprise||"?",Poste:o.titre,Type:"📥 Entrant",Piste:"💼 Grands comptes",Canal:/LinkedIn/.test(o.src)?"LinkedIn":/Salon/.test(o.src)?"Salon":"Autre",Statut:"À contacter","date:Relance:start":TODAY,"Prochaine action":`Qualifier le besoin (score ${o.score}/100) et trouver le décideur`,"Notes":`Repérée dans le cockpit (${o.src}). Points forts : ${o.why.join(", ")||"—"}. Vigilance : ${o.risk.join(", ")||"—"}.`};
   if(o.url) props["Preuve URL"]=o.url;
   const f={entreprise:props.Entreprise,poste:o.titre,type:props.Type,piste:props.Piste,canal:props.Canal,statut:"À contacter",relance:TODAY,prochaine_action:props["Prochaine action"],notes:props.Notes,preuve_url:o.url||null,ville:o.lieu||null,lat:o.lat??null,lon:o.lon??null,agent:"Cockpit, "+TODAY};
   try{ await createRow(f,props); if(o.cle) await sql(`update offres set statut='Ajoutée au pipeline' where cle=${sq(o.cle)}`); toast("Ajoutée au pipeline : "+o.entreprise); loadAll(); }
@@ -1082,12 +1082,12 @@ async function dropOffer(o,b){ if(!o.cle){ S.indeed=S.indeed.filter(x=>x!==o); S
   catch(e){ toast(writeError(e)); b.disabled=false; } }
 async function analyzeOffer(o,b){
   if(!S.sample){ toast("Claude n'est pas disponible dans cette vue"); return; } b.disabled=true; b.textContent="Claude lit l'offre…";
-  try{ const r=await S.sample.json(`${PROFIL}\n\nVoici une offre d'emploi :\nTitre : ${o.titre}\nEntreprise : ${o.entreprise}\nLieu : ${o.lieu||"?"}\nSource : ${o.src}\nTexte (extrait) : ${(o.extrait||"").slice(0,2500)}\n\nAnalyse-la pour le candidat. Réponds uniquement avec un objet JSON : {"verdict": "une phrase : postuler, contacter d'abord, ou passer, et pourquoi", "angle": "l'argument de son parcours qui colle le mieux, en une phrase", "contact": "quel intitulé de poste chercher sur LinkedIn dans cette entreprise", "message": "la note d'invitation LinkedIn de moins de 300 caractères à ce contact, dans le style imposé"}`,{modelTier:"default"});
+  try{ const r=await S.sample.json(`${PROFIL}\n\nVoici une opportunité commerciale :\nTitre : ${o.titre}\nEntreprise : ${o.entreprise}\nLieu : ${o.lieu||"?"}\nSource : ${o.src}\nTexte (extrait) : ${(o.extrait||"").slice(0,2500)}\n\nAnalyse-la pour l'équipe commerciale. Réponds uniquement avec un objet JSON : {"verdict": "une phrase : répondre, qualifier d'abord, ou passer, et pourquoi", "angle": "l'argument de notre offre qui colle le mieux, en une phrase", "contact": "quel décideur chercher sur LinkedIn dans cette entreprise", "message": "la note d'invitation LinkedIn de moins de 300 caractères à ce contact, dans le style imposé"}`,{modelTier:"default"});
     S.analyses[o.id||o.url]=r; renderOffers(); }
   catch(e){ toast(e&&e.code==="not_granted"?"Autorise Claude pour cette page (menu Autorisations)":"Analyse impossible pour l'instant"); } finally{ b.disabled=false; }
 }
 async function searchIndeed(queries,b){
-  if(!S.mcp){ toast("Indeed indisponible"); return; } if(b) b.disabled=true; const out=[];
+  if(!S.mcp){ toast("Signaux d'achat indisponibles"); return; } if(b) b.disabled=true; const out=[];
   for(const q of queries){ try{ const res=await S.mcp.callTool(INDEED,"search_jobs",{search:q,location:"Île-de-France",country_code:"FR",job_type:"fulltime"},{cache:{staleTime:3600000,gcTime:21600000}});
       const txtp=typeof res.payload==="string"?res.payload:(res.payload&&res.payload.result)||((res.content||[]).map(c=>c.text||"").join("\n"));
       String(txtp).split(/\n\s*\n(?=\*\*Job Title)/).forEach(blk=>{ const g=k=>{ const m=new RegExp("\\*\\*"+k+":\\*\\*\\s*(.+)").exec(blk); return m?m[1].trim():""; };
@@ -1107,7 +1107,7 @@ async function readAlerts(b){
     for(const t of th.slice(0,12)){ try{ const r=await S.mcp.callTool(GMAIL,"get_thread",{threadId:t.id,messageFormat:"PLAIN_TEXT"}); (r.payload&&r.payload.messages||[]).forEach(m=>bodies.push(`### ${m.sender} · ${m.subject}\n${(m.plaintextBody||m.snippet||"").slice(0,5000)}`)); }catch{} }
     if(!bodies.length){ toast("Aucune alerte d'offres ces 3 derniers jours"); return; }
     if(b) b.textContent="Claude extrait les offres…";
-    const list=await S.sample.json(`Voici des e-mails d'alertes d'offres d'emploi (LinkedIn, HelloWork, Glassdoor, Indeed, Apec).\n\n${bodies.join("\n\n").slice(0,90000)}\n\nExtrais chaque offre d'emploi distincte. Garde seulement les postes de la famille Data Analyst / BI / reporting / business analyst data / chargé d'études, en CDI ou CDD, en Île-de-France ou télétravail. Exclus les stages, alternances, postes de Data Engineer, Data Scientist, et les postes senior ou manager. Réponds uniquement avec un tableau JSON d'objets {"titre","entreprise","lieu","url","source","date"} (url = le lien de l'offre tel qu'il apparaît, date au format AAAA-MM-JJ si elle figure, sinon ""). Exemple : [{"titre":"Data Analyst H/F","entreprise":"Groupe X","lieu":"Paris","url":"https://…","source":"LinkedIn","date":""}]`,{modelTier:"default"});
+    const list=await S.sample.json(`Voici des e-mails d'alertes d'appels d'offres et de demandes de devis.\n\n${bodies.join("\n\n").slice(0,90000)}\n\nExtrais chaque opportunité distincte. Garde seulement les projets de reporting, tableaux de bord, qualité des données et automatisation, en Île-de-France ou à distance. Exclus la sous-traitance pure et les projets hors périmètre. Réponds uniquement avec un tableau JSON d'objets {"titre","entreprise","lieu","url","source","date"} (url = le lien de l'offre tel qu'il apparaît, date au format AAAA-MM-JJ si elle figure, sinon ""). Exemple : [{"titre":"Appel d'offres : reporting Power BI","entreprise":"Groupe X","lieu":"Paris","url":"https://…","source":"LinkedIn","date":""}]`,{modelTier:"default"});
     const offres=(Array.isArray(list)?list:[]).filter(o=>o&&o.titre).map((o,i)=>({id:"al-"+i+"-"+nrm(o.titre).slice(0,20),titre:String(o.titre),entreprise:String(o.entreprise||""),lieu:String(o.lieu||""),url:String(o.url||""),source:String(o.source||"Alerte mail"),date:String(o.date||""),extrait:""}));
     S.alertes={maj:new Date().toISOString(),offres}; if(S.db){ try{ await S.db.doc("veille/alertes").set(JSON.parse(JSON.stringify(S.alertes))); }catch{} }
     toast(offres.length+" offres extraites de tes alertes"); renderOffers(); renderAlerts();
@@ -1118,7 +1118,7 @@ async function readAlerts(b){
 /* ---------- Assistant Claude ---------- */
 function pipeContext(){
   const rows=active().slice(0,90).map(r=>`- ${r.entreprise} | ${r.statut} | ${(r.type||"").replace(/^\S+\s/,"")} | ${r.poste||""} | envoyé ${r.envoi||"—"} | relance ${r.relance||"—"} | contact ${r.contacts||"—"} | ${(r.action||"").slice(0,120)}`).join("\n");
-  const w=latestWeek(); return `Date du jour : ${TODAY}. Pipeline Notion actif (${active().length} fiches) :\n${rows}\nRefus au total : ${S.rows.filter(r=>r.statut==="Perdu").length}. Mesure de la semaine : ${w.invitations} invitations, ${w.acceptees} acceptées, ${w.reponses} réponses, ${w.appels} appels.\nPlaybook : invitation sans note → message 1 (3 lignes, sans CV ni lien) → relance J+3 (certification) → J+7 (portfolio + appel) → J+14 (dernier message) ; dès qu'il y a une réponse, viser un appel de 10 minutes ; objections en méthode AAC (Agree, Acknowledge, Close).`;
+  const w=latestWeek(); return `Date du jour : ${TODAY}. Pipeline Notion actif (${active().length} fiches) :\n${rows}\nOpportunités perdues au total : ${S.rows.filter(r=>r.statut==="Perdu").length}. Mesure de la semaine : ${w.invitations} invitations, ${w.acceptees} acceptées, ${w.reponses} réponses, ${w.appels} appels.\nPlaybook : premier message court → relance J+3 → J+7 (référence client + appel) → J+14 (dernier message) ; dès qu'il y a une réponse, viser un rendez-vous de 15 minutes ; objections en méthode AAC (Agree, Acknowledge, Close).`;
 }
 function renderChat(){ const box=$("#chat"); box.replaceChildren();
   if(!S.chat.length){ box.append(el("div","empty","Pose une question ou choisis un raccourci à droite.")); return; }
@@ -1143,7 +1143,7 @@ function renderQuick(){
   const Q=[["Mes 3 priorités aujourd'hui","Classées par impact, avec quoi faire concrètement.",()=>ask("Quelles sont mes 3 priorités aujourd'hui dans ma recherche ? Classe-les par impact et dis-moi exactement quoi faire.")],
     ["Écrire la relance de la fiche","Adaptée à l'étape et au contact.",()=>{ const r=pick(); if(!r) return toast("Choisis une fiche"); ask(`Écris la prochaine relance pour ${r.entreprise} (statut ${r.statut}, type ${r.type}, envoyé le ${r.envoi||"?"}, contact ${r.contacts||"?"}, notes : ${(r.notes||"").slice(0,400)}).`); }],
     ["Préparer l'appel de 10 minutes","Questions à poser, pitch d'une minute, objections.",()=>{ const r=pick(); if(!r) return toast("Choisis une fiche"); ask(`Prépare mon appel de 10 minutes avec ${r.contacts||"le contact"} de ${r.entreprise} (${r.poste||""}). Donne : la question d'ouverture, 4 questions à levier, mon pitch d'une minute adapté, et les réponses AAC aux 3 objections les plus probables.`); }],
-    ["Lettre de motivation courte","250 à 330 mots, pour la fiche choisie.",()=>{ const r=pick(); if(!r) return toast("Choisis une fiche"); ask(`Écris une lettre de motivation de 250 à 330 mots pour ${r.poste||"le poste"} chez ${r.entreprise}. Jamais défaitiste, rien d'inventé, aucun manque mis en avant.`); }],
+    ["Proposition commerciale courte","250 à 330 mots, pour la fiche choisie.",()=>{ const r=pick(); if(!r) return toast("Choisis une fiche"); ask(`Écris une proposition commerciale de 250 à 330 mots pour « ${r.poste||"le projet"} » chez ${r.entreprise}. Concrète, rien d'inventé.`); }],
     ["Bilan de la semaine","Ce qui marche, ce qui coince, quoi changer.",()=>ask("Fais le bilan de ma semaine de recherche à partir des chiffres et du pipeline : ce qui marche, ce qui coince, et une seule chose à changer la semaine prochaine (sans changer les messages avant 2 semaines de données).")],
     ["Répondre à une objection","Colle l'objection reçue dans la zone de texte.",()=>{ $("#ia-in").value="On m'a répondu : « … ». Réponds avec la méthode AAC, en restant d'égal à égal."; $("#ia-in").focus(); }]];
   const box=$("#ia-quick"); box.replaceChildren(); Q.forEach(([t,s,f])=>{ const b=el("button"); b.type="button"; b.append(el("strong",null,t),el("small",null,s)); b.addEventListener("click",f); box.append(b); });
@@ -1314,7 +1314,7 @@ $("#btn-diag").addEventListener("click",runDiag); $("#diag-close").addEventListe
 function safe(...fs){ fs.forEach(f=>{ try{ f(); }catch(e){ console.error(f.name,e); } }); }
 function drawAll(){ safe(drawFlow,drawDonut,drawCal,drawFunnel,drawTimeline,drawWeekly,drawDumbbell,drawMap,drawExp,drawBudget,drawOC,drawBigMap); }
 function renderAll(){ safe(renderKpis,renderTodo,renderBoard,renderWeeks,renderCap,renderMail,renderOffers,renderQuick,renderAgenda,renderAlerts); drawAll();
-  const a=autoWeek(); const s=$("#w-status"); if(s&&!s.dataset.user) s.textContent=`Calcul automatique Notion depuis le ${fr(a.mon)} : ${a.cand} candidature(s), ${a.prosp} message(s) de prospection, ${a.pos} réponse(s) positive(s) en cours.`; }
+  const a=autoWeek(); const s=$("#w-status"); if(s&&!s.dataset.user) s.textContent=`Calcul automatique Notion depuis le ${fr(a.mon)} : ${a.cand} entrant(s), ${a.prosp} message(s) de prospection, ${a.pos} prospect(s) intéressé(s) en cours.`; }
 renderMktKpis(); renderTemplates(); renderAll();
 let rt; new ResizeObserver(()=>{ clearTimeout(rt); rt=setTimeout(drawAll,120); }).observe($(".wrap"));
 if(window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change",()=>setTimeout(renderAll,50));

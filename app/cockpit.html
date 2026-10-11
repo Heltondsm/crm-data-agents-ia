@@ -256,15 +256,9 @@ details.more .menu .btn:hover{background:var(--sunk)}
   <nav class="tabs" role="tablist" aria-label="Sections">
     <button class="tab" role="tab" id="t-vue" aria-controls="p-vue" aria-selected="true">Vue d'ensemble</button>
     <button class="tab" role="tab" id="t-jour" aria-controls="p-jour" aria-selected="false">À faire<span class="count" id="cnt-jour" hidden></span></button>
-    <button class="tab" role="tab" id="t-mail" aria-controls="p-mail" aria-selected="false">Boîte mail<span class="count" id="cnt-mail" hidden></span></button>
-    <button class="tab" role="tab" id="t-offres" aria-controls="p-offres" aria-selected="false">Offres</button>
+    <button class="tab" role="tab" id="t-offres" aria-controls="p-offres" aria-selected="false">Opportunités</button>
     <button class="tab" role="tab" id="t-pipe" aria-controls="p-pipe" aria-selected="false">Pipeline</button>
     <button class="tab" role="tab" id="t-carte" aria-controls="p-carte" aria-selected="false">Carte</button>
-    <button class="tab" role="tab" id="t-agenda" aria-controls="p-agenda" aria-selected="false">Agenda</button>
-    <button class="tab" role="tab" id="t-ia" aria-controls="p-ia" aria-selected="false">Assistant</button>
-    <button class="tab" role="tab" id="t-prosp" aria-controls="p-prosp" aria-selected="false">Prospection</button>
-    <button class="tab" role="tab" id="t-marche" aria-controls="p-marche" aria-selected="false">Marché</button>
-    <button class="tab" role="tab" id="t-cap" aria-controls="p-cap" aria-selected="false">Objectifs</button>
     <button class="tab" role="tab" id="t-add" aria-controls="p-add" aria-selected="false" hidden>Ajouter</button>
   </nav>
 
@@ -273,8 +267,8 @@ details.more .menu .btn:hover{background:var(--sunk)}
     <div class="kpis" id="kpis"></div>
     <div class="bento">
       <article class="card s7" id="c-flow">
-        <div class="ch"><div><h2>Ce que tu as envoyé, jour par jour</h2><div class="note" id="flow-note">Candidatures et prises de contact, d'après la date d'envoi dans Notion.</div></div>
-          <div class="seg" role="group" aria-label="Type" id="flow-seg"><button aria-pressed="true" data-k="all">Tout</button><button aria-pressed="false" data-k="cand">Candidatures</button><button aria-pressed="false" data-k="prosp">Prospection</button></div></div>
+        <div class="ch"><div><h2>Prises de contact, jour par jour</h2><div class="note" id="flow-note">Prises de contact, d'après la date d'envoi.</div></div>
+          <div class="seg" role="group" aria-label="Type" id="flow-seg"><button aria-pressed="true" data-k="all">Tout</button><button aria-pressed="false" data-k="cand">Entrants</button><button aria-pressed="false" data-k="prosp">Prospection</button></div></div>
         <div class="chart" id="flow"></div>
       </article>
       <article class="card s5" id="c-status">
@@ -290,7 +284,7 @@ details.more .menu .btn:hover{background:var(--sunk)}
         <div class="chart" id="funnel"></div>
       </article>
       <article class="card s12">
-        <div class="ch"><div><h2>Prochaines échéances</h2><div class="note">Les 6 prochaines dates. Toutes les autres sont dans Objectifs.</div></div></div>
+        <div class="ch"><div><h2>Prochaines échéances</h2><div class="note">Les 6 prochaines dates.</div></div></div>
         <div class="dl" id="timeline"></div>
       </article>
     </div>
@@ -300,8 +294,8 @@ details.more .menu .btn:hover{background:var(--sunk)}
   <section role="tabpanel" id="p-jour" aria-labelledby="t-jour" hidden>
     <div class="bento">
       <article class="card s12">
-        <div class="ch"><div><h2>À faire maintenant</h2><div class="note">Messages prêts et relances arrivées à échéance. Chaque bouton met ta base à jour (copie dans Notion).</div></div>
-          <label class="small muted"><input type="checkbox" id="pl300-ok"> Certification obtenue (adapte les relances)</label></div>
+        <div class="ch"><div><h2>À faire maintenant</h2><div class="note">Messages prêts et relances arrivées à échéance. Chaque bouton met la base à jour (copie dans Notion).</div></div>
+          </div>
         <div class="todo" id="todo"></div>
       </article>
       <article class="card s12"><div class="ch"><div><h2>Messages du playbook</h2><div class="note">Copie, colle, remplace le prénom.</div></div></div><div class="todo" id="templates"></div></article>
@@ -324,8 +318,8 @@ details.more .menu .btn:hover{background:var(--sunk)}
   <section role="tabpanel" id="p-offres" aria-labelledby="t-offres" hidden>
     <div class="bento">
       <article class="card s12">
-        <div class="ch"><div><h2>Offres fraîches</h2><div class="note">Ta veille LinkedIn et Welcome to the Jungle, tes alertes mail et Indeed. Chaque offre est notée sur ton profil : vert = pour toi, orange = passer par un contact, gris = à éviter. Une carte par entreprise.</div></div>
-          <div class="row"><input type="search" id="of-q" value="Data Analyst" aria-label="Mots-clés" style="border:1px solid var(--line);background:var(--card);border-radius:10px;padding:7px 11px">
+        <div class="ch"><div><h2>Opportunités</h2><div class="note">Les opportunités repérées par les agents IA, notées sur 100 selon leur pertinence : vert = prioritaire, orange = à qualifier, gris = à écarter. Une carte par entreprise.</div></div>
+          <div class="row"><input type="search" id="of-q" value="" aria-label="Mots-clés" style="border:1px solid var(--line);background:var(--card);border-radius:10px;padding:7px 11px">
             <button class="btn primary" type="button" id="of-go">Chercher</button><button class="btn" type="button" id="of-multi">Balayage complet</button></div></div>
         <div class="row small muted" id="of-stats" style="margin-bottom:10px"></div>
         <div class="ofilters" id="of-filters"></div>
@@ -360,7 +354,7 @@ details.more .menu .btn:hover{background:var(--sunk)}
           <label>Date<input type="date" id="ag-date"></label>
           <label>Heure<input type="time" id="ag-time" value="10:00"></label>
           <label>Durée<select id="ag-dur"><option value="15">15 min</option><option value="30" selected>30 min</option><option value="45">45 min</option><option value="60">1 h</option></select></label>
-          <label>Type<select id="ag-kind"><option>Appel</option><option>Visio</option><option>Entretien sur place</option></select></label>
+          <label>Type<select id="ag-kind"><option>Appel</option><option>Visio</option><option>Rendez-vous sur place</option></select></label>
           <label class="full">Note<input type="text" id="ag-note" placeholder="Nom de l'interlocuteur, lien visio…"></label>
           <div class="full row"><button class="btn primary" type="button" id="ag-save">Créer l'entretien</button><span class="small muted" id="ag-status"></span></div>
         </div></article>
@@ -373,11 +367,11 @@ details.more .menu .btn:hover{background:var(--sunk)}
       <div class="ch"><div><h2>Pipeline</h2><div class="note">Change un statut ou une date de relance : c'est enregistré dans ta base et copié dans Notion. Clique un nom pour ouvrir la fiche.</div></div></div>
       <div class="filters">
         <input type="search" id="f-q" placeholder="Rechercher une entreprise, un poste, un contact…" aria-label="Rechercher">
-        <select id="f-piste" aria-label="Piste"><option value="">Toutes les pistes</option><option>💼 CDI / CDD Data Analyst</option><option>🎓 Alternance Data Engineer</option></select>
-        <select id="f-type" aria-label="Type"><option value="">Tous les types</option><option>📨 Candidature</option><option>🏢 Démarchage ESN</option><option>✉️ Spontanée</option><option>🤝 Réseau</option></select>
+        <select id="f-piste" aria-label="Piste"><option value="">Toutes les pistes</option><option>💼 Grands comptes</option><option>🏪 PME</option></select>
+        <select id="f-type" aria-label="Type"><option value="">Tous les types</option><option>📥 Entrant</option><option>🏢 Prospection directe</option><option>✉️ Recommandation</option><option>🤝 Partenaire</option></select>
         <select id="f-rel" aria-label="Relance"><option value="">Toutes les relances</option><option value="late">En retard</option><option value="today">Aujourd'hui</option><option value="week">7 prochains jours</option><option value="none">Sans date</option></select>
         <select id="f-sort" aria-label="Tri"><option value="relance">Tri : relance</option><option value="envoi">Tri : date d'envoi</option><option value="nom">Tri : A à Z</option></select>
-        <label class="small muted"><input type="checkbox" id="f-closed"> Refus et abandons</label><span class="small muted" id="f-count"></span>
+        <label class="small muted"><input type="checkbox" id="f-closed"> Perdus et abandonnés</label><span class="small muted" id="f-count"></span>
       </div>
       <div class="board" id="board"></div>
     </article>
@@ -435,14 +429,14 @@ details.more .menu .btn:hover{background:var(--sunk)}
   <!-- AJOUTER -->
   <section role="tabpanel" id="p-add" aria-labelledby="t-add" hidden>
     <article class="card">
-      <div class="ch"><div><h2>Ajouter une candidature ou un contact</h2><div class="note">Enregistré dans ta base, copié dans Notion. Relance automatique : +8 jours pour une candidature, +3 jours pour un message.</div></div></div>
+      <div class="ch"><div><h2>Ajouter un prospect ou un contact</h2><div class="note">Enregistré dans ta base, copié dans Notion. Relance automatique : +8 jours pour un entrant, +3 jours pour un message.</div></div></div>
       <div class="form">
         <label>Entreprise<input type="text" id="a-ent"></label>
-        <label>Poste<input type="text" id="a-poste"></label>
-        <label>Type<select id="a-type"><option>📨 Candidature</option><option>🏢 Démarchage ESN</option><option>✉️ Spontanée</option><option>🤝 Réseau</option></select></label>
-        <label>Piste<select id="a-piste"><option>💼 CDI / CDD Data Analyst</option><option>🎓 Alternance Data Engineer</option></select></label>
-        <label>Canal<select id="a-canal"><option>LinkedIn</option><option>HelloWork</option><option>Workday</option><option>Email</option><option>Recruiterflow</option><option>Autre</option></select></label>
-        <label>Statut<select id="a-statut"><option>Envoyé</option><option>À préparer</option></select></label>
+        <label>Sujet<input type="text" id="a-poste"></label>
+        <label>Type<select id="a-type"><option>📥 Entrant</option><option>🏢 Prospection directe</option><option>✉️ Recommandation</option><option>🤝 Partenaire</option></select></label>
+        <label>Piste<select id="a-piste"><option>💼 Grands comptes</option><option>🏪 PME</option></select></label>
+        <label>Canal<select id="a-canal"><option>LinkedIn</option><option>Salon</option><option>Téléphone</option><option>Email</option><option>Site web</option><option>Autre</option></select></label>
+        <label>Statut<select id="a-statut"><option>Contacté</option><option>À contacter</option></select></label>
         <label>Contact<input type="text" id="a-contact" placeholder="Prénom Nom (poste)"></label>
         <label>Lien LinkedIn du contact<input type="url" id="a-li"></label>
         <label class="full">Prochaine action<input type="text" id="a-action"></label>
@@ -463,7 +457,7 @@ details.more .menu .btn:hover{background:var(--sunk)}
 const SB = "Supabase", PROJ = "TON_PROJET_SUPABASE", IDF_GEO = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"code":"75","nom":"Paris"},"geometry":{"type":"Polygon","coordinates":[[[2.416,48.849],[2.462,48.843],[2.463,48.819],[2.438,48.818],[2.401,48.829],[2.364,48.816],[2.332,48.817],[2.279,48.832],[2.224,48.854],[2.232,48.869],[2.258,48.88],[2.277,48.878],[2.32,48.9],[2.385,48.902],[2.414,48.871],[2.416,48.849]]]}},{"type":"Feature","properties":{"code":"77","nom":"Seine-et-Marne"},"geometry":{"type":"Polygon","coordinates":[[[2.572,48.692],[2.569,48.707],[2.585,48.727],[2.585,48.742],[2.607,48.774],[2.592,48.807],[2.593,48.826],[2.568,48.866],[2.587,48.894],[2.592,48.925],[2.589,48.954],[2.572,48.969],[2.58,48.992],[2.553,49.01],[2.548,49.023],[2.588,49.05],[2.572,49.061],[2.591,49.08],[2.633,49.108],[2.673,49.091],[2.707,49.066],[2.754,49.061],[2.787,49.075],[2.792,49.09],[2.845,49.085],[2.856,49.07],[2.895,49.077],[2.902,49.085],[2.975,49.075],[3.009,49.092],[3.048,49.086],[3.072,49.118],[3.104,49.108],[3.136,49.107],[3.165,49.1],[3.154,49.083],[3.182,49.061],[3.168,49.017],[3.229,48.988],[3.252,48.972],[3.268,48.938],[3.305,48.949],[3.313,48.921],[3.33,48.909],[3.366,48.923],[3.383,48.889],[3.38,48.875],[3.405,48.864],[3.452,48.856],[3.461,48.839],[3.485,48.852],[3.485,48.825],[3.432,48.812],[3.443,48.786],[3.409,48.784],[3.396,48.759],[3.43,48.757],[3.444,48.737],[3.47,48.738],[3.464,48.707],[3.469,48.686],[3.441,48.664],[3.46,48.653],[3.517,48.643],[3.519,48.633],[3.556,48.62],[3.504,48.605],[3.498,48.59],[3.466,48.57],[3.48,48.545],[3.459,48.531],[3.423,48.534],[3.405,48.528],[3.435,48.498],[3.388,48.48],[3.406,48.452],[3.392,48.424],[3.422,48.413],[3.415,48.39],[3.383,48.4],[3.367,48.394],[3.365,48.372],[3.305,48.373],[3.282,48.378],[3.254,48.365],[3.233,48.37],[3.202,48.364],[3.14,48.373],[3.099,48.358],[3.05,48.36],[3.037,48.34],[3.042,48.329],[3.016,48.308],[3.044,48.272],[3.005,48.208],[2.974,48.206],[2.971,48.194],[2.935,48.179],[2.936,48.163],[2.868,48.156],[2.821,48.13],[2.798,48.141],[2.799,48.168],[2.741,48.16],[2.755,48.146],[2.72,48.137],[2.707,48.125],[2.663,48.122],[2.64,48.139],[2.603,48.131],[2.571,48.141],[2.538,48.14],[2.522,48.127],[2.49,48.127],[2.46,48.137],[2.483,48.165],[2.506,48.156],[2.509,48.183],[2.523,48.195],[2.507,48.226],[2.469,48.255],[2.453,48.25],[2.424,48.26],[2.421,48.299],[2.403,48.321],[2.426,48.337],[2.43,48.362],[2.469,48.376],[2.522,48.405],[2.527,48.416],[2.508,48.43],[2.502,48.485],[2.515,48.506],[2.5,48.525],[2.52,48.563],[2.518,48.583],[2.544,48.604],[2.526,48.613],[2.534,48.657],[2.545,48.671],[2.585,48.679],[2.572,48.692]]]}},{"type":"Feature","properties":{"code":"78","nom":"Yvelines"},"geometry":{"type":"Polygon","coordinates":[[[2.201,48.909],[2.168,48.895],[2.153,48.873],[2.146,48.836],[2.152,48.817],[2.177,48.814],[2.183,48.797],[2.203,48.798],[2.227,48.776],[2.203,48.771],[2.182,48.758],[2.151,48.754],[2.135,48.737],[2.098,48.734],[2.11,48.714],[2.082,48.685],[2.046,48.688],[2.018,48.642],[2.06,48.618],[2.035,48.603],[2.036,48.589],[2.017,48.569],[2.018,48.558],[1.979,48.554],[1.938,48.563],[1.934,48.548],[1.967,48.533],[1.946,48.516],[1.933,48.482],[1.915,48.474],[1.922,48.458],[1.906,48.44],[1.872,48.44],[1.845,48.449],[1.832,48.468],[1.803,48.473],[1.777,48.509],[1.776,48.528],[1.787,48.554],[1.765,48.569],[1.709,48.578],[1.702,48.585],[1.715,48.614],[1.666,48.614],[1.652,48.638],[1.603,48.662],[1.612,48.689],[1.58,48.702],[1.626,48.748],[1.588,48.774],[1.576,48.791],[1.591,48.815],[1.577,48.844],[1.582,48.855],[1.546,48.872],[1.56,48.882],[1.539,48.907],[1.539,48.922],[1.507,48.928],[1.502,48.941],[1.497,48.98],[1.477,48.979],[1.477,49.017],[1.458,49.026],[1.447,49.045],[1.461,49.063],[1.485,49.052],[1.538,49.072],[1.557,49.07],[1.602,49.085],[1.609,49.078],[1.646,49.081],[1.674,49.078],[1.694,49.057],[1.723,49.045],[1.76,49.063],[1.794,49.058],[1.797,49.072],[1.83,49.075],[1.865,49.057],[1.851,49.033],[1.869,49.018],[1.891,49.039],[1.912,49.042],[1.938,49.022],[1.992,49.021],[2.023,48.998],[2.085,49.015],[2.127,49.01],[2.121,48.993],[2.155,48.986],[2.176,48.972],[2.177,48.954],[2.206,48.95],[2.201,48.909]]]}},{"type":"Feature","properties":{"code":"91","nom":"Essonne"},"geometry":{"type":"Polygon","coordinates":[[[2.227,48.776],[2.233,48.766],[2.265,48.761],[2.314,48.73],[2.321,48.749],[2.355,48.739],[2.371,48.72],[2.414,48.718],[2.455,48.722],[2.504,48.735],[2.516,48.729],[2.531,48.7],[2.554,48.688],[2.572,48.692],[2.585,48.679],[2.545,48.671],[2.534,48.657],[2.526,48.613],[2.544,48.604],[2.518,48.583],[2.52,48.563],[2.5,48.525],[2.515,48.506],[2.502,48.485],[2.508,48.43],[2.527,48.416],[2.522,48.405],[2.469,48.376],[2.43,48.362],[2.426,48.337],[2.403,48.321],[2.363,48.31],[2.328,48.333],[2.313,48.331],[2.295,48.308],[2.238,48.316],[2.224,48.336],[2.202,48.345],[2.181,48.312],[2.156,48.304],[2.082,48.294],[2.053,48.295],[2.044,48.286],[1.994,48.287],[1.975,48.287],[1.959,48.309],[1.98,48.318],[1.97,48.34],[1.987,48.362],[1.973,48.389],[1.977,48.399],[1.926,48.413],[1.941,48.425],[1.922,48.458],[1.915,48.474],[1.933,48.482],[1.946,48.516],[1.967,48.533],[1.934,48.548],[1.938,48.563],[1.979,48.554],[2.018,48.558],[2.017,48.569],[2.036,48.589],[2.035,48.603],[2.06,48.618],[2.018,48.642],[2.046,48.688],[2.082,48.685],[2.11,48.714],[2.098,48.734],[2.135,48.737],[2.151,48.754],[2.182,48.758],[2.203,48.771],[2.227,48.776]]]}},{"type":"Feature","properties":{"code":"92","nom":"Hauts-de-Seine"},"geometry":{"type":"Polygon","coordinates":[[[2.291,48.951],[2.327,48.945],[2.336,48.932],[2.32,48.916],[2.32,48.9],[2.277,48.878],[2.258,48.88],[2.232,48.869],[2.224,48.854],[2.279,48.832],[2.332,48.817],[2.319,48.788],[2.326,48.782],[2.309,48.755],[2.321,48.749],[2.314,48.73],[2.265,48.761],[2.233,48.766],[2.227,48.776],[2.203,48.798],[2.183,48.797],[2.177,48.814],[2.152,48.817],[2.146,48.836],[2.153,48.873],[2.168,48.895],[2.201,48.909],[2.269,48.947],[2.291,48.951]]]}},{"type":"Feature","properties":{"code":"93","nom":"Seine-Saint-Denis"},"geometry":{"type":"Polygon","coordinates":[[[2.553,49.01],[2.58,48.992],[2.572,48.969],[2.589,48.954],[2.592,48.925],[2.587,48.894],[2.568,48.866],[2.593,48.826],[2.592,48.807],[2.534,48.845],[2.482,48.861],[2.416,48.849],[2.414,48.871],[2.385,48.902],[2.32,48.9],[2.32,48.916],[2.336,48.932],[2.327,48.945],[2.291,48.951],[2.299,48.966],[2.333,48.955],[2.344,48.968],[2.385,48.971],[2.407,48.956],[2.459,48.955],[2.467,48.964],[2.515,48.982],[2.532,49.005],[2.553,49.01]]]}},{"type":"Feature","properties":{"code":"94","nom":"Val-de-Marne"},"geometry":{"type":"Polygon","coordinates":[[[2.332,48.817],[2.364,48.816],[2.401,48.829],[2.438,48.818],[2.463,48.819],[2.462,48.843],[2.416,48.849],[2.482,48.861],[2.534,48.845],[2.592,48.807],[2.607,48.774],[2.585,48.742],[2.585,48.727],[2.569,48.707],[2.572,48.692],[2.554,48.688],[2.531,48.7],[2.516,48.729],[2.504,48.735],[2.455,48.722],[2.414,48.718],[2.371,48.72],[2.355,48.739],[2.321,48.749],[2.309,48.755],[2.326,48.782],[2.319,48.788],[2.332,48.817]]]}},{"type":"Feature","properties":{"code":"95","nom":"Val-d'Oise"},"geometry":{"type":"Polygon","coordinates":[[[2.591,49.08],[2.572,49.061],[2.588,49.05],[2.548,49.023],[2.553,49.01],[2.532,49.005],[2.515,48.982],[2.467,48.964],[2.459,48.955],[2.407,48.956],[2.385,48.971],[2.344,48.968],[2.333,48.955],[2.299,48.966],[2.291,48.951],[2.269,48.947],[2.201,48.909],[2.206,48.95],[2.177,48.954],[2.176,48.972],[2.155,48.986],[2.121,48.993],[2.127,49.01],[2.085,49.015],[2.023,48.998],[1.992,49.021],[1.938,49.022],[1.912,49.042],[1.891,49.039],[1.869,49.018],[1.851,49.033],[1.865,49.057],[1.83,49.075],[1.797,49.072],[1.794,49.058],[1.76,49.063],[1.723,49.045],[1.694,49.057],[1.674,49.078],[1.646,49.081],[1.609,49.078],[1.635,49.114],[1.656,49.13],[1.664,49.153],[1.674,49.21],[1.704,49.232],[1.734,49.221],[1.742,49.18],[1.755,49.175],[1.795,49.185],[1.846,49.17],[1.877,49.171],[1.885,49.163],[1.931,49.174],[1.961,49.174],[1.974,49.184],[2.001,49.176],[2.075,49.209],[2.097,49.19],[2.133,49.191],[2.182,49.174],[2.219,49.181],[2.252,49.153],[2.286,49.16],[2.311,49.186],[2.346,49.162],[2.391,49.149],[2.413,49.152],[2.472,49.135],[2.503,49.118],[2.49,49.106],[2.558,49.098],[2.591,49.08]]]}}]}, HOME = [2.3522,48.8566];
 const NOTION = "Notion", DS = "collection://TA_BASE_NOTION", DS_ID = "TA_BASE_NOTION";
 const COLS = 'Entreprise AS entreprise, Poste AS poste, Statut AS statut, Type AS type, Piste AS piste, Canal AS canal, "date:Date envoi:start" AS envoi, "date:Relance:start" AS relance, "Prochaine action" AS action, "👤 Contacts" AS contacts, "🔗 LinkedIn du contact" AS linkedin, Notes AS notes, url';
-const ACTIVE = "('À préparer','Envoyé','Relancer','Réponse positive','Entretien','Offre','Suivi flag')";
+const ACTIVE = "('À contacter','Contacté','À relancer','Intéressé','Rendez-vous','Gagné','Suivi flag')";
 const Q_ACTIVE = {data:{data_source_urls:[DS], query:`SELECT ${COLS} FROM "${DS}" WHERE Statut IN ${ACTIVE} ORDER BY "date:Relance:start" LIMIT 100`}};
 const Q_CLOSED = {data:{data_source_urls:[DS], query:`SELECT ${COLS} FROM "${DS}" WHERE Statut IS NULL OR Statut NOT IN ${ACTIVE} ORDER BY "date:Date envoi:start" DESC LIMIT 100`}};
 
@@ -472,13 +466,13 @@ const TECH = [["SQL",38.7,60.7,"ok"],["Power BI",31.3,54.5,"ok"],["Anglais",38.7
 const EXP = [["WTTJ",[21,20,16,22]],["LinkedIn",[15,22,6,45]]], EXP_K = ["2 ans ou moins","3 ans","4 ans","5 ans et plus"];
 const LIEUX = [["Paris",48.8566,2.3522,82],["Levallois-Perret",48.8946,2.2874,12],["Issy-les-Moulineaux",48.8245,2.27,12],["Boulogne-Billancourt",48.8397,2.2399,9],["Courbevoie",48.8973,2.2565,6],["Suresnes",48.8714,2.2290,5],["Neuilly-sur-Seine",48.8846,2.2697,5],["Vélizy",48.7826,2.1925,4],["Villejuif",48.7922,2.3634,3],["Montrouge",48.8163,2.3163,3],["Domicile",48.8566,2.3522,0]];
 const MKT = [["~50 %","des offres demandent un Bac+5"],["73-83 %","veulent 3 ans ou plus quand c'est précisé"],["6 %","cochées « premier emploi » sur LinkedIn"],["36-45 k€","salaire junior Île-de-France"]];
-const DEADLINES = [["2027-01-15","Entretien final (exemple)","crit"],["2026-11-05","Fin d'un projet de formation (exemple)","warn"],["2026-11-20","Certification (exemple)","warn"],["2026-12-01","Bilan du trimestre (exemple)","info"],["2026-12-15","Salon de recrutement (exemple)","info"],["2027-02-01","Prise de poste visée (exemple)","crit"]];
+const DEADLINES = [["2027-01-15","Signature d'un contrat (exemple)","crit"],["2026-11-05","Relance des devis en cours (exemple)","warn"],["2026-11-20","Salon professionnel (exemple)","warn"],["2026-12-01","Revue du trimestre (exemple)","info"],["2026-12-15","Lancement de campagne (exemple)","info"],["2027-02-01","Renouvellement d'un contrat (exemple)","crit"]];
 const FERRARI = [["f0","Étape 1 de ton plan (exemple)",true],["f1","Étape 2",false],["f2","Étape 3",false],["f3","Étape 4",false]];
 const OC = [["Projet 1","Exemple de projet terminé","done"],["Projet 2","Exemple de projet terminé","done"],["Projet 3","Exemple de projet en cours","doing"],["Projet 4","Exemple de projet à venir","todo"]];
 const BUDGET = [["2026-10",900,"A"],["2026-11",900,"A"],["2026-12",900,"A"],["2027-01",700,"B"],["2027-02",700,"B"],["2027-03",700,"B"],["2027-04",700,"B"]];
 const SEED_WEEK = {debut:"2026-10-05",invitations:60,acceptees:24,reponses:6,appels:2,note:"Exemple"};
-const STATUTS = ["À préparer","Envoyé","Relancer","Réponse positive","Entretien","Offre","Refus","Abandon"];
-const SCOLOR = {"À préparer":"var(--coral)","Envoyé":"var(--teal)","Relancer":"var(--warn)","Réponse positive":"var(--ok)","Entretien":"var(--navy)","Offre":"var(--ok)","Refus":"var(--bad)","Abandon":"var(--sand)","Suivi flag":"var(--warn)"};
+const STATUTS = ["À contacter","Contacté","À relancer","Intéressé","Rendez-vous","Gagné","Perdu","Abandonné"];
+const SCOLOR = {"À contacter":"var(--coral)","Contacté":"var(--teal)","À relancer":"var(--warn)","Intéressé":"var(--ok)","Rendez-vous":"var(--navy)","Gagné":"var(--ok)","Perdu":"var(--bad)","Abandonné":"var(--sand)","Suivi flag":"var(--warn)"};
 
 /* Outils */
 const $ = (s,r=document) => r.querySelector(s);
@@ -491,7 +485,7 @@ const diffDays = s => Math.round((P(s)-P(TODAY))/864e5);
 const fr = s => s ? P(s).toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit"}) : "—";
 const frL = s => P(s).toLocaleDateString("fr-FR",{weekday:"short",day:"numeric",month:"short"});
 const pageId = u => (u||"").replace(/[^0-9a-f]/gi,"").slice(-32);
-const isProsp = r => /Démarchage|Réseau/.test(r.type||"") || /^Prospection/.test(r.poste||"");
+const isProsp = r => /Prospection directe|Partenaire/.test(r.type||"") || /^Prospection/.test(r.poste||"");
 const firstName = r => { const m=/^MESSAGE 1 : Bonjour ([^,]+),/.exec(r.action||""); if(m) return m[1]; return (r.contacts||"").replace(/^[^A-Za-zÀ-ÿ]+/,"").split(/[ (·]/)[0]||""; };
 const stageOf = r => ((r.notes||"").match(/\[R\d/g)||[]).length;
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v.replace(/^var\((.*)\)$/,"$1")).trim();
@@ -501,7 +495,7 @@ async function copy(t){ try{ await navigator.clipboard.writeText(t); toast("Copi
 const S = { rows:[], loaded:false, mcp:null, db:null, weeks:[], prefs:{pl300:false,ferrari:{}}, busy:new Set(), flowKey:"all", calDay:null, pipeStatus:null };
 try { const p=JSON.parse(localStorage.getItem("cockpit-prefs")||"null"); if(p) Object.assign(S.prefs,p); } catch {}
 const savePrefsLocal = () => { try { localStorage.setItem("cockpit-prefs",JSON.stringify(S.prefs)); } catch {} };
-const active = () => S.rows.filter(r => !["Refus","Abandon"].includes(r.statut) && r.statut);
+const active = () => S.rows.filter(r => !["Perdu","Abandonné"].includes(r.statut) && r.statut);
 
 /* Onglets */
 const tabs=[...document.querySelectorAll(".tab")];
@@ -538,9 +532,9 @@ function renderKpis(){
   const pl=diffDays("2026-10-16");
   const K=[
     {lab:"À faire aujourd'hui",val:todo,hot:true,foot:[todo?"messages et relances":"rien d'urgent",""]},
-    {lab:"Envoyées au total",val:sent.length,spark:cum,color:"var(--teal)",badge:[(wk>=prev?"+":"")+(wk-prev)+" vs sem. passée",wk>=prev?"up":"down"]},
-    {lab:"En attente de réponse",val:cnt("Envoyé")+cnt("Relancer"),spark:daily.slice(-14),color:"var(--ink2)"},
-    {lab:"Réponses positives",val:cnt("Réponse positive")+cnt("Entretien")+cnt("Offre"),badge:[cnt("Entretien")+" entretien(s)","teal"]},
+    {lab:"Prises de contact",val:sent.length,spark:cum,color:"var(--teal)",badge:[(wk>=prev?"+":"")+(wk-prev)+" vs sem. passée",wk>=prev?"up":"down"]},
+    {lab:"En attente de réponse",val:cnt("Contacté")+cnt("À relancer"),spark:daily.slice(-14),color:"var(--ink2)"},
+    {lab:"Réponses positives",val:cnt("Intéressé")+cnt("Rendez-vous")+cnt("Gagné"),badge:[cnt("Rendez-vous")+" rendez-vous","teal"]},
     {lab:"Taux de réponse",val:Math.round(rate*100)+" %",badge:[rate>=.25?"excellent":rate>=.15?"correct":"à surveiller",rate>=.25?"up":rate>=.15?"teal":"warn"]},
     (()=>{ const nx=DEADLINES.filter(d=>d[0]>=TODAY).sort((a,b)=>a[0].localeCompare(b[0]))[0]; const j=nx?diffDays(nx[0]):null; return {lab:"Prochaine échéance",val:nx?(j?"J-"+j:"Jour J"):"—",badge:[nx?nx[1].slice(0,26):"aucune","coral"]}; })()];
   K.forEach(k=>{ const c=el("div","kpi"+(k.hot?" hot":"")); c.append(el("div","lab",k.lab), el("div","val",S.loaded||!/total|attente|positives|aujourd/.test(k.lab)?String(k.val):"—"));
@@ -567,7 +561,7 @@ function drawFlow(){
   // zone annotée : semaine du démarchage ESN
   const band=[P("2026-10-05"),P("2026-10-11")];
   if(band[0]>=x.domain()[0]){ svg.append("rect").attr("x",x(band[0])).attr("y",m.t).attr("width",Math.max(0,x(band[1])-x(band[0]))).attr("height",H-m.b-m.t).attr("fill",css("var(--sunk)")).attr("rx",6);
-    svg.append("text").attr("x",Math.min(W-m.r,x(band[1]))).attr("text-anchor","end").attr("y",m.t-10).attr("fill",css("var(--muted)")).attr("font-size",11).text("Semaine du démarchage"); }
+    svg.append("text").attr("x",Math.min(W-m.r,x(band[1]))).attr("text-anchor","end").attr("y",m.t-10).attr("fill",css("var(--muted)")).attr("font-size",11).text("Semaine de campagne"); }
   svg.append("g").attr("class","axis").attr("transform",`translate(0,${H-m.b})`).call(d3.axisBottom(x).ticks(Math.min(7,Math.floor(W/90))).tickFormat(d3.utcFormat("%d/%m")).tickSizeOuter(0)).call(g=>g.select(".domain").remove());
   svg.append("g").attr("class","axis").attr("transform",`translate(${m.l},0)`).call(d3.axisLeft(y).ticks(4).tickSize(0)).call(g=>g.select(".domain").remove());
   const area=d3.area().x(d=>x(d.d)).y0(H-m.b).y1(d=>y(d.v)), line=d3.line().x(d=>x(d.d)).y(d=>y(d.v));
@@ -591,7 +585,7 @@ $("#flow-seg").addEventListener("click",e=>{ const b=e.target.closest("button");
 function drawDonut(){
   const box=$("#donut"), list=$("#slist"); if(!box.clientWidth) return; box.replaceChildren(); list.replaceChildren();
   if(!S.loaded){ list.append(el("div","muted","Chargement…")); return; }
-  const data=STATUTS.map(s=>({s,n:S.rows.filter(r=>r.statut===s||(s==="Relancer"&&r.statut==="Suivi flag")).length})).filter(d=>d.n);
+  const data=STATUTS.map(s=>({s,n:S.rows.filter(r=>r.statut===s||(s==="À relancer"&&r.statut==="Suivi flag")).length})).filter(d=>d.n);
   const size=Math.min(box.clientWidth,200), R=size/2, svg=d3.select(box).append("svg").attr("viewBox",`0 0 ${size} ${size}`).attr("height",size);
   const g=svg.append("g").attr("transform",`translate(${R},${R})`);
   const arc=d3.arc().innerRadius(R*.64).outerRadius(R-2).cornerRadius(4).padAngle(.018);
@@ -606,12 +600,12 @@ function drawDonut(){
     r.append(sw, el("span",null,d.s), el("span","mono",String(d.n)), el("span","muted small mono",Math.round(d.n/tot*100)+" %"));
     r.addEventListener("click",()=>openPipe(d.s)); r.addEventListener("keydown",e=>{ if(e.key==="Enter") openPipe(d.s); }); list.append(r); });
 }
-function openPipe(s){ S.pipeStatus=s; $("#f-closed").checked = s==="Refus"||s==="Abandon"; showTab("t-pipe"); renderBoard(); }
+function openPipe(s){ S.pipeStatus=s; $("#f-closed").checked = s==="Perdu"||s==="Abandonné"; showTab("t-pipe"); renderBoard(); }
 
 /* ---------- Calendrier des relances ---------- */
 function drawCal(){
   const box=$("#cal"), list=$("#callist"); box.replaceChildren(); list.replaceChildren();
-  const rows=active().filter(r=>r.relance); const late=rows.filter(r=>r.relance<TODAY && r.statut!=="À préparer").length;
+  const rows=active().filter(r=>r.relance); const late=rows.filter(r=>r.relance<TODAY && r.statut!=="À contacter").length;
   const lb=$("#late-badge"); lb.hidden=!late; lb.textContent=late+" en retard";
   const days=d3.range(14).map(i=>addDays(TODAY,i)); const m=d3.rollup(rows,v=>v,r=>r.relance<TODAY?TODAY:r.relance);
   const max=d3.max(days,d=>(m.get(d)||[]).length)||1;
@@ -653,40 +647,39 @@ function drawTimeline(){
 }
 
 /* ---------- À faire ---------- */
-function todoItems(){ return active().filter(r=> r.statut==="À préparer" || (["Envoyé","Relancer","Réponse positive","Suivi flag"].includes(r.statut) && r.relance && r.relance<=TODAY)).sort((a,b)=>(a.relance||"9999").localeCompare(b.relance||"9999")); }
+function todoItems(){ return active().filter(r=> r.statut==="À contacter" || (["Contacté","À relancer","Intéressé","Suivi flag"].includes(r.statut) && r.relance && r.relance<=TODAY)).sort((a,b)=>(a.relance||"9999").localeCompare(b.relance||"9999")); }
 function relanceText(r){
-  const n=stageOf(r)+1, pre=firstName(r)?`Bonjour ${firstName(r)}, `:"Bonjour, ";
-  if(!isProsp(r)) return `${pre}j'ai candidaté le ${fr(r.envoi)} au poste de ${(r.poste||"").replace(/\s*\(.*$/,"")}. Le poste m'intéresse toujours beaucoup et je suis disponible pour un échange de 15 minutes. ${S.prefs.pl300?"Je viens d'obtenir la certification [à venir].":"Je suis certifié [certification obtenue]."}`;
-  if(n===1) return S.prefs.pl300 ? "Petite nouvelle : je viens d'obtenir la certification [à venir], en plus de [certification obtenue]. Si un besoin data passe chez vos clients, je suis preneur d'un échange."
-    : "Petite précision : je suis certifié [certification obtenue] et je passe la certification [à venir] bientôt. Si un besoin data passe chez vos clients, je suis preneur d'un échange.";
-  if(n===2) return "Pour vous donner une idée de ce que je fais : [ton portfolio] (tableaux de bord Power BI, pipelines dbt). Un appel de 10 minutes cette semaine vous irait ?";
-  return "Dernier message de ma part : si un besoin Data Analyst arrive chez vos clients d'ici janvier, je serai content d'en parler. Bonne journée !";
+  const n=stageOf(r)+1, pre=firstName(r)?`Bonjour ${firstName(r)}, `:"Bonjour, ", sujet=(r.poste||"votre projet").replace(/\s*\(.*$/,"");
+  if(!isProsp(r)) return `${pre}je reviens vers vous au sujet de « ${sujet} », suite à votre demande du ${fr(r.envoi)}. Avez-vous 15 minutes cette semaine pour en parler ?`;
+  if(n===1) return `${pre}je me permets de vous relancer : nous aidons des équipes comme la vôtre à automatiser leur reporting. Un échange de 15 minutes vous irait ?`;
+  if(n===2) return "Pour vous donner une idée concrète : un tableau de bord de direction livré en deux semaines chez un client du même secteur. Un appel de 10 minutes cette semaine ?";
+  return "Dernier message de ma part : si le sujet revient dans vos priorités, je serai content d'en parler. Bonne journée !";
 }
 const abtn=(l,c,f)=>{ const b=el("button","btn "+(c||""),l); b.type="button"; b.addEventListener("click",()=>f(b)); return b; };
 S.openGroups=S.openGroups||{};
 function moreMenu(items){ const d=el("details","more"); d.append(el("summary",null,"Plus ▾")); const m=el("div","menu"); items.forEach(x=>m.append(x)); d.append(m);
   d.addEventListener("toggle",()=>{ if(d.open) document.querySelectorAll("details.more[open]").forEach(o=>{ if(o!==d) o.open=false; }); }); return d; }
 function todoCard(r){
-  const late=r.relance&&r.relance<TODAY&&r.statut!=="À préparer"; const it=el("article","item "+(late?"late":"due"));
+  const late=r.relance&&r.relance<TODAY&&r.statut!=="À contacter"; const it=el("article","item "+(late?"late":"due"));
   const h=el("div","head"), L=el("div"); L.append(el("span","who",r.entreprise||"Sans nom")); if(r.contacts) L.append(el("span","muted small"," · "+r.contacts.slice(0,80)));
-  const R=el("div","row"); R.append(el("span","badge "+(r.statut==="À préparer"?"coral":"teal"), r.statut==="À préparer"?(/^MESSAGE 1/.test(r.action||"")?"Message 1":"À préparer"):r.statut==="Réponse positive"?"Réponse":"Relance "+(stageOf(r)+1)));
+  const R=el("div","row"); R.append(el("span","badge "+(r.statut==="À contacter"?"coral":"teal"), r.statut==="À contacter"?(/^MESSAGE 1/.test(r.action||"")?"Message 1":"À contacter"):r.statut==="Intéressé"?"Réponse":"Relance "+(stageOf(r)+1)));
   if(late) R.append(el("span","badge down","depuis le "+fr(r.relance))); h.append(L,R); it.append(h);
   if(r.poste && !/^Prospection/.test(r.poste)) it.append(el("div","small muted",r.poste));
-  let text=""; if(r.statut==="À préparer" && /^MESSAGE 1 : /.test(r.action||"")) text=r.action.replace(/^MESSAGE 1 : /,""); else if(r.statut==="À préparer"||r.statut==="Réponse positive"){ if(r.action) it.append(el("div","small",r.action)); } else text=relanceText(r);
+  let text=""; if(r.statut==="À contacter" && /^MESSAGE 1 : /.test(r.action||"")) text=r.action.replace(/^MESSAGE 1 : /,""); else if(r.statut==="À contacter"||r.statut==="Intéressé"){ if(r.action) it.append(el("div","small",r.action)); } else text=relanceText(r);
   let msgEl=null; if(text){ msgEl=el("div","msg",text); it.append(msgEl); }
   const A=el("div","acts"), menu=[];
   if(text) A.append(abtn("Copier","",()=>copy(msgEl.textContent)));
-  if(r.statut==="À préparer"){ A.append(abtn(/^MESSAGE 1/.test(r.action||"")?"Envoyé ✓":"Candidature envoyée ✓","primary",b=>markSent(r,b))); }
-  else if(r.statut==="Réponse positive"){ A.append(abtn("Planifier l'appel","primary",()=>{ $("#ag-ent").value=r.url; showTab("t-agenda"); })); }
+  if(r.statut==="À contacter"){ A.append(abtn(/^MESSAGE 1/.test(r.action||"")?"Envoyé ✓":"Contacté ✓","primary",b=>markSent(r,b))); }
+  else if(r.statut==="Intéressé"){ A.append(abtn("Planifier l'appel","primary",()=>{ $("#ag-ent").value=r.url; showTab("t-agenda"); })); }
   else { A.append(abtn(`Relance ${stageOf(r)+1} envoyée ✓`,"primary",b=>markRelance(r,b))); }
   if(r.linkedin){ const a=el("a","btn","LinkedIn ↗"); a.href=r.linkedin; a.target="_blank"; a.rel="noopener"; A.append(a); }
   if(text) menu.push(abtn("✨ Personnaliser avec Claude","",async b=>{ if(!S.sample){ toast("Claude n'est pas disponible dans cette vue"); return; } b.disabled=true; b.textContent="Claude réécrit…";
     try{ const res=await S.sample(`${PROFIL}\n\nRéécris ce message LinkedIn pour ${r.contacts||"le contact"} chez ${r.entreprise} (${r.type||""}, ${r.poste||""}). Garde le même but et la même étape, 3 lignes maximum, rends-le plus personnel s'il y a un détail utile dans les notes : ${(r.notes||"").slice(0,500)}\n\nMessage actuel : ${msgEl.textContent}\n\nRéponds uniquement avec le nouveau message.`,{modelTier:"quick",cache:false}); msgEl.textContent=res.text.trim(); }
     catch(e){ toast("Claude indisponible pour l'instant"); } finally{ b.disabled=false; b.textContent="✨ Personnaliser avec Claude"; } }));
-  if(r.statut!=="À préparer"&&r.statut!=="Réponse positive") menu.push(abtn("Il a répondu","",b=>update(r,{Statut:"Réponse positive","date:Relance:start":addDays(TODAY,2),"Prochaine action":"Réponse reçue : proposer un appel de 10 minutes"},b,"Réponse positive")));
+  if(r.statut!=="À contacter"&&r.statut!=="Intéressé") menu.push(abtn("Il a répondu","",b=>update(r,{Statut:"Intéressé","date:Relance:start":addDays(TODAY,2),"Prochaine action":"Réponse reçue : proposer un appel de 10 minutes"},b,"Intéressé")));
   menu.push(abtn("📇 Ouvrir la fiche","",()=>openFiche(r)));
   menu.push(abtn("Reporter de 2 jours","",b=>update(r,{"date:Relance:start":addDays(TODAY,2)},b,"Reportée au "+fr(addDays(TODAY,2)))));
-  menu.push(r.statut==="À préparer" ? abtn("Abandonner","danger",b=>update(r,{Statut:"Abandon"},b,"Abandonné")) : abtn("Refus reçu","danger",b=>update(r,{Statut:"Refus","date:Relance:start":null},b,"Refus noté")));
+  menu.push(r.statut==="À contacter" ? abtn("Abandonner","danger",b=>update(r,{Statut:"Abandonné"},b,"Abandonné")) : abtn("Refus reçu","danger",b=>update(r,{Statut:"Perdu","date:Relance:start":null},b,"Refus noté")));
   if(r.nurl){ const a=el("a","btn","Ouvrir dans Notion ↗"); a.href=r.nurl; a.target="_blank"; a.rel="noopener"; menu.push(a); }
   A.append(moreMenu(menu)); it.append(A); return it;
 }
@@ -694,8 +687,8 @@ function renderTodo(){
   const box=$("#todo"); box.replaceChildren();
   if(!S.loaded){ box.append(el("div","empty","Chargement des fiches Notion…")); return; }
   const items=todoItems(); if(!items.length){ box.append(el("div","empty","Rien à faire pour aujourd'hui.")); return; }
-  const G=[["rep","🔥 Réponses à traiter",r=>r.statut==="Réponse positive"],["late","Relances en retard",r=>r.statut!=="À préparer"&&r.statut!=="Réponse positive"&&r.relance<TODAY],
-    ["today","Relances du jour",r=>r.statut!=="À préparer"&&r.statut!=="Réponse positive"&&r.relance===TODAY],["m1","Messages 1 à envoyer",r=>r.statut==="À préparer"]];
+  const G=[["rep","🔥 Réponses à traiter",r=>r.statut==="Intéressé"],["late","Relances en retard",r=>r.statut!=="À contacter"&&r.statut!=="Intéressé"&&r.relance<TODAY],
+    ["today","Relances du jour",r=>r.statut!=="À contacter"&&r.statut!=="Intéressé"&&r.relance===TODAY],["m1","Messages 1 à envoyer",r=>r.statut==="À contacter"]];
   G.forEach(([k,t,f])=>{ const list=items.filter(f); if(!list.length) return; const g=el("section","grp"), h=el("h3",null,t); h.append(el("span","badge",String(list.length))); g.append(h);
     const open=S.openGroups[k], shown=open?list:list.slice(0,4); shown.forEach(r=>g.append(todoCard(r)));
     if(list.length>4){ g.append(abtn(open?"Replier":`Afficher les ${list.length-4} autres`,"ghost",()=>{ S.openGroups[k]=!open; renderTodo(); })); }
@@ -703,13 +696,11 @@ function renderTodo(){
 }
 document.addEventListener("click",e=>{ if(!e.target.closest("details.more")) document.querySelectorAll("details.more[open]").forEach(d=>d.open=false); });
 function renderTemplates(){
-  const T=[["Message 1 · commercial ESN","Bonjour [Prénom], merci pour l'ajout. Je suis Data Analyst (SQL, Power BI, Python) et je cherche un CDI en Île-de-France pour janvier. Vos clients ont des besoins data en ce moment ?"],
-  ["Message 1 · recruteur interne","Bonjour [Prénom], merci pour l'ajout. Je suis Data Analyst (SQL, Power BI, Python) et je cherche un CDI en Île-de-France pour janvier. [Entreprise] recrute sur la data en ce moment ?"],
-  ["Message 1 · cabinet de recrutement","Bonjour [Prénom], merci pour l'ajout. Je suis Data Analyst (SQL, Power BI, Python) et je cherche un CDI en Île-de-France pour janvier. Vous avez des recrutements data en cours en ce moment ?"],
-  ["Message 1 · pair data","Bonjour [Prénom], merci pour l'ajout. Je deviens Data Analyst après dix ans dans le commerce. Qu'est-ce qui vous a le plus servi pour bien démarrer chez [Entreprise] ?"],
-  ["Réponse « oui, on a des besoins »","Avec plaisir. Le plus simple : on s'appelle 10 minutes cette semaine ? Je vous envoie le CV juste après."],
-  ["Réponse « pas de besoin »","Merci pour le retour. Vous recrutez plutôt quels profils data en ce moment ? Je peux revenir vers vous dans un mois ?"],
-  ["Objection expérience ou Bac+5 (AAC)","Je comprends, vous avez besoin de quelqu'un d'opérationnel vite. Au-delà de l'expérience, mon profil vous paraît-il pertinent pour vos clients ?"]];
+  const T=[["Premier message · prospect","Bonjour [Prénom], merci pour l'ajout. J'accompagne des équipes comme [Entreprise] sur leur reporting. Où en êtes-vous sur ce sujet en ce moment ?"],
+  ["Premier message · recommandation","Bonjour [Prénom], [Contact] m'a conseillé de vous écrire au sujet de votre reporting commercial. Auriez-vous 15 minutes cette semaine ?"],
+  ["Réponse « intéressé »","Avec plaisir. Le plus simple : on s'appelle 15 minutes cette semaine ? Je vous envoie une proposition juste après."],
+  ["Réponse « pas de besoin »","Merci pour le retour. Je peux revenir vers vous au prochain trimestre ?"],
+  ["Objection « budget »","Je comprends. On peut commencer par un tableau de bord simple et mesurer le temps gagné avant d'aller plus loin."]];
   const box=$("#templates"); box.replaceChildren();
   T.forEach(([t,m])=>{ const it=el("article","item"); it.append(el("div","who",t),el("div","msg",m)); const r=el("div","row"); r.append(abtn("Copier","",()=>copy(m))); it.append(r); box.append(it); });
 }
@@ -727,26 +718,26 @@ async function update(r,props,btn,ok){
   if(S.busy.has(r.url)) return; S.busy.add(r.url); if(btn) btn.disabled=true;
   const before={...r}; Object.entries(props).forEach(([k,v])=>{ if(FIELDMAP[k]) r[FIELDMAP[k]]=v; }); renderAll();
   const sets=Object.entries(props).filter(([k])=>COLMAP[k]).map(([k,v])=>COLMAP[k]+"="+sq(v));
-  try{ await sql(`update candidatures set ${sets.join(", ")}, updated_at=now() where id=${+r.id}`); toast(ok||"Enregistré"); loadAll(); mirror(r,props); }
+  try{ await sql(`update fiches set ${sets.join(", ")}, updated_at=now() where id=${+r.id}`); toast(ok||"Enregistré"); loadAll(); mirror(r,props); }
   catch(e){ Object.assign(r,before); renderAll(); toast(writeError(e)); } finally{ S.busy.delete(r.url); if(btn) btn.disabled=false; }
 }
 async function mirror(r,props){ if(!r.notion_page_id) return;
   try{ await S.mcp.callTool(NOTION,"notion-update-page",{page_id:r.notion_page_id,command:"update_properties",properties:props}); }
-  catch(e){ try{ await sql(`update candidatures set notion_sync=false where id=${+r.id}`); }catch{} } }
+  catch(e){ try{ await sql(`update fiches set notion_sync=false where id=${+r.id}`); }catch{} } }
 async function createRow(f,props){
-  const cols=Object.keys(f).filter(k=>f[k]!=null&&f[k]!==""); const res=await sql(`insert into candidatures (${cols.join(",")}) values (${cols.map(c=>sq(f[c])).join(",")}) returning id`);
+  const cols=Object.keys(f).filter(k=>f[k]!=null&&f[k]!==""); const res=await sql(`insert into fiches (${cols.join(",")}) values (${cols.map(c=>sq(f[c])).join(",")}) returning id`);
   const id=res[0]&&res[0].id; loadAll();
   try{ const n=await S.mcp.callTool(NOTION,"notion-create-pages",{parent:{type:"data_source_id",data_source_id:DS_ID},pages:[{properties:props}]});
     const m=/id\\?"\s*:\s*\\?"([0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12})/.exec(JSON.stringify(n&&("payload" in n)?n.payload:n));
-    if(m&&id) await sql(`update candidatures set notion_page_id=${sq(m[1].replace(/-/g,""))}, notion_sync=true where id=${+id}`); }
-  catch{ if(id) sql(`update candidatures set notion_sync=false where id=${+id}`).catch(()=>{}); }
+    if(m&&id) await sql(`update fiches set notion_page_id=${sq(m[1].replace(/-/g,""))}, notion_sync=true where id=${+id}`); }
+  catch{ if(id) sql(`update fiches set notion_sync=false where id=${+id}`).catch(()=>{}); }
   return id; }
 function markSent(r,b){ const p=isProsp(r)||/^MESSAGE 1/.test(r.action||""); const rel=addDays(TODAY,p?3:8);
-  update(r,{Statut:"Envoyé","date:Date envoi:start":r.envoi||TODAY,"date:Relance:start":rel,"Prochaine action":p?`Relance 1 le ${fr(rel)} si pas de réponse`:`Relance le ${fr(rel)} si pas de réponse`},b,"Envoyé · relance le "+fr(rel)); }
+  update(r,{Statut:"Contacté","date:Date envoi:start":r.envoi||TODAY,"date:Relance:start":rel,"Prochaine action":p?`Relance 1 le ${fr(rel)} si pas de réponse`:`Relance le ${fr(rel)} si pas de réponse`},b,"Envoyé · relance le "+fr(rel)); }
 function markRelance(r,b){ const n=stageOf(r)+1,p=isProsp(r); let nx,ac;
   if(p&&n===1){nx=addDays(TODAY,4);ac=`Relance 2 (portfolio + appel) le ${fr(nx)}`;} else if(p&&n===2){nx=addDays(TODAY,7);ac=`Relance 3 (dernier message) le ${fr(nx)}`;}
   else if(p){nx=addDays(TODAY,28);ac=`Fin de séquence : nouvelle pro le ${fr(nx)}`;} else if(n===1){nx=addDays(TODAY,8);ac=`Dernière relance le ${fr(nx)} avec un élément nouveau`;} else {nx=addDays(TODAY,21);ac="Classer sans réponse si rien d'ici là";}
-  update(r,{Statut:"Envoyé","date:Relance:start":nx,"Prochaine action":ac,"Notes":((r.notes||"").trim()+` [R${n} ${fr(TODAY)}]`).trim()},b,`Relance ${n} notée · suite le ${fr(nx)}`); }
+  update(r,{Statut:"Contacté","date:Relance:start":nx,"Prochaine action":ac,"Notes":((r.notes||"").trim()+` [R${n} ${fr(TODAY)}]`).trim()},b,`Relance ${n} notée · suite le ${fr(nx)}`); }
 function writeError(e){ const c=e&&e.code;
   return c==="needs_reauth"?"Reconnecte Notion : claude.ai → Paramètres → Connecteurs" : c==="server_not_connected"?"Ajoute Notion dans claude.ai → Paramètres → Connecteurs"
     : c==="not_in_manifest"?"Notion n'est pas autorisé pour cette page (menu Autorisations)" : c==="tool_error"?"Notion a refusé : "+(e.message||"").slice(0,120)
@@ -759,14 +750,14 @@ function renderBoard(){
   const rl=$("#f-rel").value, so=$("#f-sort").value, wk=addDays(TODAY,7);
   const rows=S.rows.filter(r=>(!pi||r.piste===pi)&&(!ty||r.type===ty)&&(!q||nrm([r.entreprise,r.poste,r.contacts,r.notes,r.ville].join(" ")).includes(nrm(q)))
     &&(!rl||(rl==="late"?r.relance&&r.relance<TODAY:rl==="today"?r.relance===TODAY:rl==="week"?r.relance&&r.relance>=TODAY&&r.relance<=wk:!r.relance)));
-  $("#f-count").textContent=rows.filter(r=>cl||!["Refus","Abandon"].includes(r.statut)).length+" fiche(s)";
+  $("#f-count").textContent=rows.filter(r=>cl||!["Perdu","Abandonné"].includes(r.statut)).length+" fiche(s)";
   const cmp=so==="nom"?(a,b)=>(a.entreprise||"").localeCompare(b.entreprise||""):so==="envoi"?(a,b)=>(b.envoi||"").localeCompare(a.envoi||""):(a,b)=>(a.relance||"9999").localeCompare(b.relance||"9999");
-  STATUTS.forEach(s=>{ if(!cl&&(s==="Refus"||s==="Abandon")) return; const list=rows.filter(r=>r.statut===s||(s==="Relancer"&&r.statut==="Suivi flag"));
-    if(!list.length&&!["À préparer","Envoyé","Réponse positive","Entretien"].includes(s)) return;
+  STATUTS.forEach(s=>{ if(!cl&&(s==="Perdu"||s==="Abandonné")) return; const list=rows.filter(r=>r.statut===s||(s==="À relancer"&&r.statut==="Suivi flag"));
+    if(!list.length&&!["À contacter","Contacté","Intéressé","Rendez-vous"].includes(s)) return;
     const col=el("div","col"), h=el("h3"), bar=el("span","bar"); bar.style.background=SCOLOR[s]; h.append(el("span",null,s),bar,el("span","mono muted",String(list.length))); col.append(h);
     if(S.pipeStatus===s) col.style.boxShadow="inset 0 0 0 2px "+css(SCOLOR[s]);
     list.sort(cmp).forEach(r=>{ const c=el("div","pcard"); const tt=el("button","t",r.entreprise||"Sans nom"); tt.type="button"; tt.style.cssText="all:unset;font-weight:700;cursor:pointer;overflow-wrap:anywhere"; tt.addEventListener("click",()=>openFiche(r)); c.append(tt); if(r.poste) c.append(el("div","p",r.poste.slice(0,90)));
-      const meta=el("div","row small"); meta.append(el("span","badge",(r.type||"").replace(/^\S+\s/,"")||"—")); if(r.relance) meta.append(el("span",r.relance<TODAY&&!["Refus","Abandon"].includes(r.statut)?"late":"muted","relance "+fr(r.relance))); else if(r.envoi) meta.append(el("span","muted","envoyé "+fr(r.envoi))); c.append(meta);
+      const meta=el("div","row small"); meta.append(el("span","badge",(r.type||"").replace(/^\S+\s/,"")||"—")); if(r.relance) meta.append(el("span",r.relance<TODAY&&!["Perdu","Abandonné"].includes(r.statut)?"late":"muted","relance "+fr(r.relance))); else if(r.envoi) meta.append(el("span","muted","envoyé "+fr(r.envoi))); c.append(meta);
       const ctl=el("div","ctl"), sel=el("select"); sel.setAttribute("aria-label","Statut de "+(r.entreprise||"")); STATUTS.concat("Suivi flag").forEach(o=>sel.append(new Option(o,o,false,o===r.statut)));
       sel.addEventListener("change",()=>update(r,{Statut:sel.value},null,"Statut : "+sel.value));
       const d=el("input"); d.type="date"; d.value=r.relance||""; d.setAttribute("aria-label","Relance"); d.addEventListener("change",()=>{ if(!d.value||d.validity.valid) update(r,{"date:Relance:start":d.value||null},null,d.value?"Relance le "+fr(d.value):"Relance retirée"); });
@@ -903,10 +894,10 @@ function renderCap(){
 /* ---------- Ajouter ---------- */
 $("#a-save").addEventListener("click",async()=>{ const st=$("#a-status"), ent=$("#a-ent").value.trim(); if(!ent){ st.textContent="Indique au moins l'entreprise."; return; }
   if(!S.mcp){ st.textContent="La base n'est pas disponible ici."; return; }
-  const type=$("#a-type").value, statut=$("#a-statut").value, p=type!=="📨 Candidature";
-  const props={Entreprise:ent,Poste:$("#a-poste").value||(p?"Prospection LinkedIn · CDI Data Analyst":""),Type:type,Piste:$("#a-piste").value,Canal:$("#a-canal").value,Statut:statut,"👤 Contacts":$("#a-contact").value||"","Prochaine action":$("#a-action").value||""};
+  const type=$("#a-type").value, statut=$("#a-statut").value, p=type!=="📥 Entrant";
+  const props={Entreprise:ent,Poste:$("#a-poste").value||(p?"Prospection directe":""),Type:type,Piste:$("#a-piste").value,Canal:$("#a-canal").value,Statut:statut,"👤 Contacts":$("#a-contact").value||"","Prochaine action":$("#a-action").value||""};
   const li=$("#a-li").value.trim(); if(li) props["🔗 LinkedIn du contact"]=li;
-  if(statut==="Envoyé"){ props["date:Date envoi:start"]=TODAY; props["date:Relance:start"]=addDays(TODAY,p?3:8); } else props["date:Relance:start"]=TODAY;
+  if(statut==="Contacté"){ props["date:Date envoi:start"]=TODAY; props["date:Relance:start"]=addDays(TODAY,p?3:8); } else props["date:Relance:start"]=TODAY;
   const b=$("#a-save"); b.disabled=true; st.textContent="Création…";
   const f={entreprise:ent,poste:props.Poste,type,piste:props.Piste,canal:props.Canal,statut,contacts:props["👤 Contacts"],prochaine_action:props["Prochaine action"],linkedin:li||null,date_envoi:props["date:Date envoi:start"]||null,relance:props["date:Relance:start"]||null,agent:"Cockpit, "+TODAY};
   try{ await createRow(f,props); st.textContent="Créé (copie Notion en cours)."; toast("Fiche créée");
@@ -914,8 +905,8 @@ $("#a-save").addEventListener("click",async()=>{ const st=$("#a-status"), ent=$(
   catch(e){ st.textContent=writeError(e); } finally{ b.disabled=false; } });
 
 /* ---------- Préférences ---------- */
-$("#pl300-ok").checked=!!S.prefs.pl300;
-$("#pl300-ok").addEventListener("change",e=>{ S.prefs.pl300=e.target.checked; savePrefs(); renderTodo(); });
+if($("#pl300-ok")) $("#pl300-ok").checked=!!S.prefs.pl300;
+if($("#pl300-ok")) $("#pl300-ok").addEventListener("change",e=>{ S.prefs.pl300=e.target.checked; savePrefs(); renderTodo(); });
 async function savePrefs(){ savePrefsLocal(); if(S.db){ try{ await S.db.doc("reglages/profil").set(JSON.parse(JSON.stringify(S.prefs))); }catch{} } }
 
 /* =====================================================================
@@ -938,7 +929,7 @@ function matchRow(text){
   return best;
 }
 
-/* ---------- Gmail : réponses aux candidatures ---------- */
+/* ---------- Gmail : réponses aux fiches ---------- */
 function classify(m){
   const t=nrm((m.subject||"")+" "+(m.snippet||""));
   if(/(ne (pas )?donner suite|pas de suite favorable|suite favorable a votre|ne pas retenir|pas ete retenu|n.avons pas retenu|ne pourrons pas|regret|malheureusement|not been selected|unfortunately|other candidates|d.autres (candidats|profils)|plus adaptees au poste)/.test(t)) return "refus";
@@ -956,15 +947,15 @@ function watchMail(){
     else { S.mailErr=errText(ev.error,"Gmail"); renderMail(); } },{cache:{staleTime:120000},refetchInterval:600000});
 }
 function mailVisible(){ return S.mails.filter(m=>{ const done=!!S.mailState[m.id]; if(S.mailFilter==="done") return done; if(done) return false;
-  if(S.mailFilter==="todo") return (m.kind==="refus"&&m.row&&m.row.statut!=="Refus")||m.kind==="pos"; return m.kind===S.mailFilter; }); }
+  if(S.mailFilter==="todo") return (m.kind==="refus"&&m.row&&m.row.statut!=="Perdu")||m.kind==="pos"; return m.kind===S.mailFilter; }); }
 function renderMail(){
   const box=$("#mail-list"); box.replaceChildren();
-  const pend=S.mails.filter(m=>!S.mailState[m.id]&&((m.kind==="refus"&&m.row&&m.row.statut!=="Refus")||m.kind==="pos")).length;
-  const c=$("#cnt-mail"); c.hidden=!pend; c.textContent=pend;
+  const pend=S.mails.filter(m=>!S.mailState[m.id]&&((m.kind==="refus"&&m.row&&m.row.statut!=="Perdu")||m.kind==="pos")).length;
+  const c=$("#cnt-mail"); if(c){ c.hidden=!pend; c.textContent=pend; }
   if(S.mailErr){ box.append(el("div","banner",S.mailErr)); return; }
   if(!S.mcp){ box.append(el("div","empty","Connexion…")); return; }
   const list=mailVisible(); if(!list.length){ box.append(el("div","empty",S.mails.length?"Rien dans cette catégorie.":"Lecture de Gmail…")); return; }
-  const KL={refus:["Refus","down"],ack:["Accusé de réception",""],pos:["Réponse à traiter","coral"],autre:["Autre",""]};
+  const KL={refus:["Perdu","down"],ack:["Accusé de réception",""],pos:["Réponse à traiter","coral"],autre:["Autre",""]};
   list.forEach(m=>{ const it=el("article","item"+(m.kind==="pos"?" due":m.kind==="refus"?" late":""));
     const h=el("div","head"), L=el("div"); L.append(el("span","who",m.subject||"(sans objet)")); L.append(el("div","small muted",m.from+" · "+fr(m.date)));
     const R=el("div","row"); R.append(el("span","badge "+KL[m.kind][1],KL[m.kind][0])); if(m.url){ const a=el("a","small","Ouvrir dans Gmail ↗"); a.href=m.url; a.target="_blank"; a.rel="noopener"; R.append(a); } h.append(L,R); it.append(h);
@@ -974,7 +965,7 @@ function renderMail(){
     sel.addEventListener("change",()=>{ m.row=S.rows.find(r=>r.url===sel.value)||null; });
     A.append(sel);
     if(m.kind==="refus") A.append(abtn("Passer en refus","coral",b=>applyMail(m,"refus",b)));
-    if(m.kind==="pos"){ A.append(abtn("Réponse positive","primary",b=>applyMail(m,"pos",b))); A.append(abtn("Planifier l'entretien","",()=>{ if(m.row) $("#ag-ent").value=m.row.url; showTab("t-agenda"); })); A.append(abtn("Rédiger la réponse avec Claude","",()=>{ $("#ia-in").value=`Rédige ma réponse à ce mail (${m.from}, objet « ${m.subject} ») : « ${m.snippet} ». Objectif : caler un appel ou un entretien rapidement.`; showTab("t-ia"); })); }
+    if(m.kind==="pos"){ A.append(abtn("Intéressé","primary",b=>applyMail(m,"pos",b))); A.append(abtn("Planifier l'entretien","",()=>{ if(m.row) $("#ag-ent").value=m.row.url; showTab("t-agenda"); })); A.append(abtn("Rédiger la réponse avec Claude","",()=>{ $("#ia-in").value=`Rédige ma réponse à ce mail (${m.from}, objet « ${m.subject} ») : « ${m.snippet} ». Objectif : caler un appel ou un entretien rapidement.`; showTab("t-ia"); })); }
     if(m.kind==="autre") A.append(abtn("C'est un refus","ghost",b=>applyMail(m,"refus",b)));
     A.append(abtn(S.mailState[m.id]?"Remettre à traiter":"Ignorer","ghost",()=>setMailState(m.id,S.mailState[m.id]?null:"ignore")));
     it.append(A); box.append(it); });
@@ -982,22 +973,22 @@ function renderMail(){
 async function setMailState(id,st){ if(st) S.mailState[id]=st; else delete S.mailState[id]; renderMail(); renderAlerts(); if(S.db){ try{ st? await S.db.collection("mails").doc(id).set({etat:st,at:new Date().toISOString()}) : await S.db.collection("mails").doc(id).delete(); }catch{} } }
 async function applyMail(m,kind,btn){
   if(!m.row){ toast("Choisis d'abord la fiche Notion concernée"); return; }
-  const props = kind==="refus" ? {Statut:"Refus","date:Relance:start":null,"Prochaine action":"Refus reçu par mail le "+fr(m.date)} : {Statut:"Réponse positive","date:Relance:start":addDays(TODAY,1),"Prochaine action":"Réponse reçue le "+fr(m.date)+" : proposer un créneau d'appel"};
+  const props = kind==="refus" ? {Statut:"Perdu","date:Relance:start":null,"Prochaine action":"Refus reçu par mail le "+fr(m.date)} : {Statut:"Intéressé","date:Relance:start":addDays(TODAY,1),"Prochaine action":"Réponse reçue le "+fr(m.date)+" : proposer un créneau d'appel"};
   await update(m.row,props,btn,kind==="refus"?m.row.entreprise+" passée en refus":m.row.entreprise+" : réponse positive");
   setMailState(m.id,"applique");
 }
 $("#mail-seg").addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; S.mailFilter=b.dataset.k; [...e.currentTarget.children].forEach(x=>x.setAttribute("aria-pressed",x===b)); renderMail(); });
 $("#mail-refresh").addEventListener("click",()=>{ S.mcp&&S.mcp.invalidate(GMAIL,"search_threads").catch(()=>watchMail()); toast("Relecture de Gmail…"); });
-$("#mail-all").addEventListener("click",async e=>{ const todo=S.mails.filter(m=>m.kind==="refus"&&m.row&&m.row.statut!=="Refus"&&!S.mailState[m.id]); if(!todo.length){ toast("Aucun refus à appliquer"); return; }
+$("#mail-all").addEventListener("click",async e=>{ const todo=S.mails.filter(m=>m.kind==="refus"&&m.row&&m.row.statut!=="Perdu"&&!S.mailState[m.id]); if(!todo.length){ toast("Aucun refus à appliquer"); return; }
   e.target.disabled=true; for(const m of todo){ await applyMail(m,"refus"); } e.target.disabled=false; toast(todo.length+" refus appliqués"); });
 
 /* Bandeau d'alertes automatiques (Vue d'ensemble) */
 function renderAlerts(){
   let box=$("#alerts"); if(!box){ box=el("div","alerts"); box.id="alerts"; $("#p-vue").prepend(box); } box.replaceChildren();
-  const pos=S.mails.filter(m=>m.kind==="pos"&&!S.mailState[m.id]).length, ref=S.mails.filter(m=>m.kind==="refus"&&m.row&&m.row.statut!=="Refus"&&!S.mailState[m.id]).length;
-  const late=active().filter(r=>r.relance&&r.relance<TODAY&&r.statut!=="À préparer").length;
+  const pos=S.mails.filter(m=>m.kind==="pos"&&!S.mailState[m.id]).length, ref=S.mails.filter(m=>m.kind==="refus"&&m.row&&m.row.statut!=="Perdu"&&!S.mailState[m.id]).length;
+  const late=active().filter(r=>r.relance&&r.relance<TODAY&&r.statut!=="À contacter").length;
   const nOff=allOffers().filter(o=>o.score>=65&&!o.inPipe).length;
-  const items=[[pos,`${pos} réponse(s) à traiter dans Gmail`,"coral","t-mail"],[ref,`${ref} refus à enregistrer`,"down","t-mail"],[late,`${late} relance(s) en retard`,"warn","t-jour"],[nOff,`${nOff} offre(s) très adaptées à toi`,"up","t-offres"]];
+  const items=[[pos,`${pos} réponse(s) à traiter dans Gmail`,"coral","t-mail"],[ref,`${ref} refus à enregistrer`,"down","t-mail"],[late,`${late} relance(s) en retard`,"warn","t-jour"],[nOff,`${nOff} offre(s) prioritaires`,"up","t-offres"]];
   items.forEach(([n,l,c,t])=>{ if(!n) return; const b=el("button","badge "+c,l); b.type="button"; b.style.fontSize="13px"; b.style.padding="5px 12px"; b.addEventListener("click",()=>showTab(t)); box.append(b); });
 }
 
@@ -1044,36 +1035,36 @@ function offerCard(o,sibs){
   const chips=el("div","meta"); o.why.slice(0,3).forEach(w=>chips.append(el("span","badge up",w))); o.risk.slice(0,2).forEach(w=>chips.append(el("span","badge warn",w))); if(chips.childNodes.length) body.append(chips);
   const an=S.analyses[o.id||o.url]; if(an) body.append(analysisBox(an));
   const A=el("div","acts"); if(!o.inPipe) A.append(abtn("Ajouter au pipeline","primary",b=>addOffer(o,b)));
-  if(o.url){ const a=el("a","btn","Voir l'offre ↗"); a.href=o.url; a.target="_blank"; a.rel="noopener"; A.append(a); }
+  if(o.url){ const a=el("a","btn","Voir l'opportunité ↗"); a.href=o.url; a.target="_blank"; a.rel="noopener"; A.append(a); }
   A.append(abtn(an?"Réanalyser":"✨ Analyser","",b=>analyzeOffer(o,b))); if(!o.inPipe) A.append(abtn("Écarter","ghost danger",b=>dropOffer(o,b))); body.append(A);
-  if(sibs&&sibs.length){ const d=el("details","sib"); d.append(el("summary",null,`+ ${sibs.length} autre(s) poste(s) chez ${o.entreprise}`)); const ul=el("ul");
+  if(sibs&&sibs.length){ const d=el("details","sib"); d.append(el("summary",null,`+ ${sibs.length} autre(s) opportunité(s) chez ${o.entreprise}`)); const ul=el("ul");
     sibs.forEach(x=>{ const li=el("li"); const a=el("a",null,x.titre); a.href=x.url||"#"; a.target="_blank"; a.rel="noopener"; li.append(a," ",el("span","muted","· "+x.score)); ul.append(li); }); d.append(ul); body.append(d); }
   it.append(body); return it;
 }
 function renderOffers(){
   const box=$("#of-list"); box.replaceChildren(); const All=allOffers();
   const by=d3.rollup(All,v=>v.length,o=>String(o.src).split(" + ")[0]);
-  $("#of-stats").textContent = `${All.length} offres · ` + [...by].map(([k,v])=>`${k} ${v}`).join(" · ") + (S.veille.maj?` · veille du ${new Date(S.veille.maj).toLocaleString("fr-FR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})}`:"") + (S.alertes.maj?` · alertes lues le ${new Date(S.alertes.maj).toLocaleString("fr-FR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})}`:"");
+  $("#of-stats").textContent = `${All.length} opportunités · ` + [...by].map(([k,v])=>`${k} ${v}`).join(" · ") + (S.veille.maj?` · veille du ${new Date(S.veille.maj).toLocaleString("fr-FR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})}`:"") + (S.alertes.maj?` · alertes lues le ${new Date(S.alertes.maj).toLocaleString("fr-FR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})}`:"");
   renderOfferFilters(All);
   const bar=el("div","row"); bar.style.marginBottom="12px";
-  bar.append(abtn("Extraire les offres de mes alertes mail (Claude)","coral",b=>readAlerts(b)));
+  bar.append(abtn("Extraire les opportunités des mails (Claude)","coral",b=>readAlerts(b)));
   const auto=el("label","small muted"); const cb=el("input"); cb.type="checkbox"; cb.checked=!!S.prefs.autoAlerts; cb.addEventListener("change",()=>{ S.prefs.autoAlerts=cb.checked; savePrefs(); }); auto.append(cb," Automatique à l'ouverture (une fois par 12 h)"); bar.append(auto);
   box.append(bar);
   const qq=nrm(S.of.q||""); const L=All.filter(o=>o.score>=S.of.min && (!S.of.src||String(o.src).startsWith(S.of.src)) && !(S.of.hidePipe&&o.inPipe) && (!qq||nrm([o.titre,o.entreprise,o.lieu].join(" ")).includes(qq)));
-  if(!L.length){ box.append(el("div","empty",All.length?"Aucune offre avec ces filtres.":"Aucune offre pour l'instant : lance une recherche ou extrais tes alertes mail.")); return; }
+  if(!L.length){ box.append(el("div","empty",All.length?"Aucune opportunité avec ces filtres.":"Aucune offre pour l'instant : lance une recherche ou extrais tes alertes mail.")); return; }
   const groups=d3.groups(L,o=>nrm(o.entreprise)||o.id); const grid=el("div","ogrid");
   groups.slice(0,60).forEach(([k,list])=>grid.append(offerCard(list[0],list.slice(1))));
   box.append(grid);
-  const hidden=All.length-L.length; if(hidden) box.append(el("div","small muted",`${hidden} offre(s) masquée(s) par les filtres.`));
+  const hidden=All.length-L.length; if(hidden) box.append(el("div","small muted",`${hidden} opportunité(s) masquée(s) par les filtres.`));
 }
 function analysisBox(an){ const d=el("div","analysis"); d.append(el("div",null,"Verdict : "+(an.verdict||"")));
   if(an.angle) d.append(el("div",null,"Angle : "+an.angle)); if(an.contact) d.append(el("div",null,"Qui contacter : "+an.contact));
   if(an.message){ const m=el("div","msg",an.message); d.append(m); const r=el("div","row"); r.append(abtn("Copier le message","",()=>copy(an.message))); d.append(r); } return d; }
 async function addOffer(o,b){
   if(!S.mcp){ toast("Base indisponible"); return; } b.disabled=true;
-  const props={Entreprise:o.entreprise||"?",Poste:o.titre,Type:"📨 Candidature",Piste:"💼 CDI / CDD Data Analyst",Canal:/LinkedIn/.test(o.src)?"LinkedIn":/Hello/.test(o.src)?"HelloWork":"Autre",Statut:"À préparer","date:Relance:start":TODAY,"Prochaine action":`Postuler (score ${o.score}/100) et chercher le recruteur ou le futur manager`,"Notes":`Repérée dans le cockpit (${o.src}). Points forts : ${o.why.join(", ")||"—"}. Vigilance : ${o.risk.join(", ")||"—"}.`};
+  const props={Entreprise:o.entreprise||"?",Poste:o.titre,Type:"📥 Entrant",Piste:"💼 Grands comptes",Canal:/LinkedIn/.test(o.src)?"LinkedIn":/Hello/.test(o.src)?"HelloWork":"Autre",Statut:"À contacter","date:Relance:start":TODAY,"Prochaine action":`Postuler (score ${o.score}/100) et chercher le recruteur ou le futur manager`,"Notes":`Repérée dans le cockpit (${o.src}). Points forts : ${o.why.join(", ")||"—"}. Vigilance : ${o.risk.join(", ")||"—"}.`};
   if(o.url) props["Preuve URL"]=o.url;
-  const f={entreprise:props.Entreprise,poste:o.titre,type:props.Type,piste:props.Piste,canal:props.Canal,statut:"À préparer",relance:TODAY,prochaine_action:props["Prochaine action"],notes:props.Notes,preuve_url:o.url||null,ville:o.lieu||null,lat:o.lat??null,lon:o.lon??null,agent:"Cockpit, "+TODAY};
+  const f={entreprise:props.Entreprise,poste:o.titre,type:props.Type,piste:props.Piste,canal:props.Canal,statut:"À contacter",relance:TODAY,prochaine_action:props["Prochaine action"],notes:props.Notes,preuve_url:o.url||null,ville:o.lieu||null,lat:o.lat??null,lon:o.lon??null,agent:"Cockpit, "+TODAY};
   try{ await createRow(f,props); if(o.cle) await sql(`update offres set statut='Ajoutée au pipeline' where cle=${sq(o.cle)}`); toast("Ajoutée au pipeline : "+o.entreprise); loadAll(); }
   catch(e){ toast(writeError(e)); } finally{ b.disabled=false; }
 }
@@ -1112,13 +1103,13 @@ async function readAlerts(b){
     S.alertes={maj:new Date().toISOString(),offres}; if(S.db){ try{ await S.db.doc("veille/alertes").set(JSON.parse(JSON.stringify(S.alertes))); }catch{} }
     toast(offres.length+" offres extraites de tes alertes"); renderOffers(); renderAlerts();
   } catch(e){ toast(e&&e.code&&/sample|not_granted|rate/.test(e.code+"")?"Claude indisponible pour l'instant":errText(e,"Gmail")); }
-  finally{ if(b){ b.disabled=false; b.textContent="Extraire les offres de mes alertes mail (Claude)"; } }
+  finally{ if(b){ b.disabled=false; b.textContent="Extraire les opportunités des mails (Claude)"; } }
 }
 
 /* ---------- Assistant Claude ---------- */
 function pipeContext(){
   const rows=active().slice(0,90).map(r=>`- ${r.entreprise} | ${r.statut} | ${(r.type||"").replace(/^\S+\s/,"")} | ${r.poste||""} | envoyé ${r.envoi||"—"} | relance ${r.relance||"—"} | contact ${r.contacts||"—"} | ${(r.action||"").slice(0,120)}`).join("\n");
-  const w=latestWeek(); return `Date du jour : ${TODAY}. Pipeline Notion actif (${active().length} fiches) :\n${rows}\nRefus au total : ${S.rows.filter(r=>r.statut==="Refus").length}. Mesure de la semaine : ${w.invitations} invitations, ${w.acceptees} acceptées, ${w.reponses} réponses, ${w.appels} appels.\nPlaybook : invitation sans note → message 1 (3 lignes, sans CV ni lien) → relance J+3 (certification) → J+7 (portfolio + appel) → J+14 (dernier message) ; dès qu'il y a une réponse, viser un appel de 10 minutes ; objections en méthode AAC (Agree, Acknowledge, Close).`;
+  const w=latestWeek(); return `Date du jour : ${TODAY}. Pipeline Notion actif (${active().length} fiches) :\n${rows}\nRefus au total : ${S.rows.filter(r=>r.statut==="Perdu").length}. Mesure de la semaine : ${w.invitations} invitations, ${w.acceptees} acceptées, ${w.reponses} réponses, ${w.appels} appels.\nPlaybook : invitation sans note → message 1 (3 lignes, sans CV ni lien) → relance J+3 (certification) → J+7 (portfolio + appel) → J+14 (dernier message) ; dès qu'il y a une réponse, viser un appel de 10 minutes ; objections en méthode AAC (Agree, Acknowledge, Close).`;
 }
 function renderChat(){ const box=$("#chat"); box.replaceChildren();
   if(!S.chat.length){ box.append(el("div","empty","Pose une question ou choisis un raccourci à droite.")); return; }
@@ -1165,7 +1156,7 @@ function renderAgenda(){
       evs.forEach(e=>{ const x=el("div"); const h=e.start&&e.start.dateTime?e.start.dateTime.slice(11,16):"journée"; const hl=/certif|entretien|appel|rdv|visio|onvue/i.test(e.summary||"");
         x.append(el("span","h",h), el("span",hl?"hl":null,e.summary||"(sans titre)")); c.append(x); }); r.append(c); box.append(r); }); }
   const sel=$("#ag-ent"), cur=sel.value; sel.replaceChildren(new Option("— choisir —",""));
-  active().slice().sort((a,b)=>{ const pa=/Réponse|Entretien/.test(a.statut)?0:1, pb=/Réponse|Entretien/.test(b.statut)?0:1; return pa-pb||(a.entreprise||"").localeCompare(b.entreprise||""); })
+  active().slice().sort((a,b)=>{ const pa=/Intéressé|Rendez-vous/.test(a.statut)?0:1, pb=/Intéressé|Rendez-vous/.test(b.statut)?0:1; return pa-pb||(a.entreprise||"").localeCompare(b.entreprise||""); })
     .forEach(r=>sel.append(new Option(r.entreprise+" · "+r.statut,r.url,false,r.url===cur)));
   if(!$("#ag-date").value) $("#ag-date").value=addDays(TODAY,1);
 }
@@ -1176,14 +1167,14 @@ $("#ag-save").addEventListener("click",async()=>{
   const endT=`${iso(endD)}T${pad(endD.getHours())}:${pad(endD.getMinutes())}:00`;
   st.textContent="Création…";
   try{ await S.mcp.callTool(GCAL,"create_event",{summary:`📞 ${kind} · ${r.entreprise}`,startTime:`${d}T${h}:00`,endTime:endT,description:`${r.poste||""}\nContact : ${r.contacts||"—"}\n${$("#ag-note").value||""}\n\nPréparer : question d'ouverture, 4 questions à levier, pitch d'une minute, objections en AAC (onglet Assistant du cockpit).`,overrideReminders:[{method:"popup",minutes:1440},{method:"popup",minutes:60}]});
-    await update(r,{Statut:"Entretien","date:Relance:start":addDays(d,1),"Prochaine action":`${kind} le ${fr(d)} à ${h} : remerciement sous 24 h ensuite`},null,"Entretien planifié et noté dans Notion");
+    await update(r,{Statut:"Rendez-vous","date:Relance:start":addDays(d,1),"Prochaine action":`${kind} le ${fr(d)} à ${h} : remerciement sous 24 h ensuite`},null,"Entretien planifié et noté dans Notion");
     st.textContent="Créé dans Google Agenda."; S.mcp.invalidate(GCAL,"list_events").catch(()=>{}); }
   catch(e){ st.textContent=errText(e,"Google Agenda"); }
 });
 
 /* ---------- Mesure automatique depuis Notion ---------- */
 function autoWeek(){ const d=P(TODAY); d.setDate(d.getDate()-((d.getDay()+6)%7)); const mon=iso(d);
-  const w=S.rows.filter(r=>r.envoi&&r.envoi>=mon); return {mon,cand:w.filter(r=>!isProsp(r)).length,prosp:w.filter(isProsp).length,pos:S.rows.filter(r=>["Réponse positive","Entretien","Offre"].includes(r.statut)).length}; }
+  const w=S.rows.filter(r=>r.envoi&&r.envoi>=mon); return {mon,cand:w.filter(r=>!isProsp(r)).length,prosp:w.filter(isProsp).length,pos:S.rows.filter(r=>["Intéressé","Rendez-vous","Gagné"].includes(r.statut)).length}; }
 
 /* ---------- Fiche détaillée ---------- */
 function closeFiche(){ $("#drawer").hidden=true; $("#scrim").hidden=true; S.fiche=null; }
@@ -1220,7 +1211,7 @@ function openFiche(r){
 }
 
 /* ---------- Recherche globale (⌘K) ---------- */
-const TABS_NAV=[["t-vue","Vue d'ensemble"],["t-jour","À faire"],["t-mail","Boîte mail"],["t-offres","Offres"],["t-pipe","Pipeline"],["t-carte","Carte"],["t-agenda","Agenda"],["t-ia","Assistant"],["t-prosp","Prospection"],["t-marche","Marché"],["t-cap","Objectifs"],["t-add","Ajouter une fiche"]];
+const TABS_NAV=[["t-vue","Vue d'ensemble"],["t-jour","À faire"],["t-offres","Opportunités"],["t-pipe","Pipeline"],["t-carte","Carte"],["t-add","Ajouter une fiche"]];
 function openPal(){ $("#pal").hidden=false; const i=$("#pal-in"); i.value=""; S.palSel=0; renderPal(); setTimeout(()=>i.focus(),20); }
 function closePal(){ $("#pal").hidden=true; }
 function palItems(q){ const n=nrm(q).trim(); const out=[];
@@ -1254,7 +1245,7 @@ function mapCtl(){ const c=$("#map-ctl"); if(c.childNodes.length) return;
   const q=el("input"); q.type="search"; q.placeholder="Filtrer…"; q.addEventListener("input",()=>{ S.map.q=q.value; drawBigMap(); }); c.append(q);
   const lab=el("label","small muted"), cb=el("input"); cb.type="checkbox"; cb.addEventListener("change",()=>{ S.map.late=cb.checked; drawBigMap(); }); lab.append(cb," Relances en retard"); c.append(lab); }
 function mapPoints(){ const n=nrm(S.map.q); const pts=[];
-  if(S.map.layer!=="off") S.rows.filter(r=>r.lat&&r.lon&&(S.map.statut?r.statut===S.map.statut:!["Refus","Abandon"].includes(r.statut)||S.map.statut)&&(!S.map.late||(r.relance&&r.relance<TODAY))&&(!n||nrm([r.entreprise,r.poste,r.contacts,r.ville].join(" ")).includes(n)))
+  if(S.map.layer!=="off") S.rows.filter(r=>r.lat&&r.lon&&(S.map.statut?r.statut===S.map.statut:!["Perdu","Abandonné"].includes(r.statut)||S.map.statut)&&(!S.map.late||(r.relance&&r.relance<TODAY))&&(!n||nrm([r.entreprise,r.poste,r.contacts,r.ville].join(" ")).includes(n)))
     .forEach(r=>pts.push({k:"r",r,lon:+r.lon,lat:+r.lat,t:r.entreprise,s:[r.statut,r.ville].filter(Boolean).join(" · "),c:css(SCOLOR[r.statut]||"var(--teal)")}));
   if(S.map.layer!=="pipe"&&!S.map.statut&&!S.map.late) allOffers().filter(o=>o.lat&&o.lon&&o.score>=(S.of.min||0)&&(!n||nrm([o.titre,o.entreprise,o.lieu].join(" ")).includes(n)))
     .forEach(o=>pts.push({k:"o",o,lon:+o.lon,lat:+o.lat,t:o.entreprise,s:o.titre+" · "+o.score+"/100",c:css(o.score>=65?"var(--ok)":o.score>=45?"var(--warn)":"var(--muted)")}));
@@ -1297,7 +1288,7 @@ async function runDiag(){ const box=$("#diag-res"); box.replaceChildren(); $("#d
   const c=window.claude; const env=line("Environnement"); if(!c||!c.use){ env(false,"window.claude absent : page ouverte hors de claude.ai ?"); return; } env(true,"claude.ai détecté");
   const m=await c.use("mcp"); const lm=line("Accès connecteurs"); if(!m){ lm(false,"use('mcp') = null : connecteurs non disponibles dans cette vue (application de bureau ? ouvre le lien dans le navigateur)"); } else lm(true,"OK");
   const err=e=>(e&&(e.code||"erreur"))+" · "+String((e&&e.message)||e||"").slice(0,220);
-  const T=[["Supabase","Supabase","execute_sql",{project_id:PROJ,query:"select count(*) n from candidatures"},r=>{ const x=sqlRows(r); return x.length?x[0].n+" fiches lues":"réponse vide · brut : "+JSON.stringify(r&&("payload" in r)?r.payload:r).slice(0,200); }],
+  const T=[["Supabase","Supabase","execute_sql",{project_id:PROJ,query:"select count(*) n from fiches"},r=>{ const x=sqlRows(r); return x.length?x[0].n+" fiches lues":"réponse vide · brut : "+JSON.stringify(r&&("payload" in r)?r.payload:r).slice(0,200); }],
     ["Notion (écriture)",NOTION,null],["Gmail",GMAIL,"search_threads",{query:"newer_than:2d",pageSize:1},r=>"OK · "+(((r.payload||{}).threads||[]).length)+" fil lu"],
     ["Google Agenda",GCAL,"list_events",{startTime:TODAY+"T00:00:00",endTime:addDays(TODAY,1)+"T23:59:00",pageSize:3},r=>"OK · "+(((r.payload||{}).events||[]).length)+" événement(s)"],
     ["Indeed",INDEED,"search_jobs",{search:"Data Analyst",location:"Paris",country_code:"FR"},r=>"OK"]];
@@ -1323,7 +1314,7 @@ new MutationObserver(()=>setTimeout(renderAll,30)).observe(document.documentElem
 /* ---------- Notion en direct ---------- */
 function setSync(k,t){ $("#sync-dot").className="dot "+(k||""); $("#sync-text").textContent=t; }
 function banner(m,bad){ const b=$("#banner"); if(!m){ b.hidden=true; return; } b.hidden=false; b.className="banner"+(bad?" bad":""); b.textContent=m; }
-const Q_ROWS = `select id, notion_page_id, entreprise, poste, statut, type, piste, canal, chances, to_char(date_envoi,'YYYY-MM-DD') envoi, to_char(relance,'YYYY-MM-DD') relance, prochaine_action action, contacts, linkedin, email, telephone, notes, preuve_url preuve, message_pret msg, agent, ville, lat, lon, notion_sync from candidatures order by relance nulls last, id`;
+const Q_ROWS = `select id, notion_page_id, entreprise, poste, statut, type, piste, canal, chances, to_char(date_envoi,'YYYY-MM-DD') envoi, to_char(relance,'YYYY-MM-DD') relance, prochaine_action action, contacts, linkedin, email, telephone, notes, preuve_url preuve, message_pret msg, agent, ville, lat, lon, notion_sync from fiches order by relance nulls last, id`;
 const Q_OFFRES = `select cle, titre, entreprise, lieu, source, to_char(publiee_le,'YYYY-MM-DD') publiee, url, statut, to_char(trouvee_le,'YYYY-MM-DD') trouvee, left(extrait,600) extrait, lat, lon, flags from offres where statut is distinct from 'Écartée' order by trouvee_le desc, id desc limit 400`;
 function errBanner(ev,what){ const c=ev.error&&ev.error.code; S.lastErr=(c||"?")+" · "+String((ev.error&&ev.error.message)||"").slice(0,200); const deny=["needs_reauth","server_not_connected","blocked_by_policy","approval_required","not_in_manifest","selection_required"].includes(c);
   banner(c==="needs_reauth"?"Supabase doit être reconnecté : claude.ai → Paramètres → Connecteurs." : c==="server_not_connected"?"Ajoute le connecteur Supabase dans claude.ai → Paramètres → Connecteurs."
@@ -1355,7 +1346,7 @@ $("#btn-refresh").addEventListener("click",()=>{ if(!S.mcp) return; setSync("war
     db.doc("veille/alertes").onSnapshot(s=>{ const v=s&&s.data&&s.data(); if(v&&Array.isArray(v.offres)){ S.alertes={maj:v.maj,offres:JSON.parse(JSON.stringify(v.offres))}; renderOffers(); renderAlerts(); } maybeAutoAlerts(); },()=>{});
     db.collection("mails").onSnapshot(s=>{ S.mailState={}; (s.docs||[]).forEach(d=>{ const v=d.data(); if(v&&v.etat) S.mailState[d.id]=v.etat; }); renderMail(); renderAlerts(); },()=>{});
     db.collection("semaines").onSnapshot(s=>{ S.weeks=(s.docs||[]).map(d=>d.data()).filter(w=>w&&w.debut); renderKpis(); drawFunnel(); drawWeekly(); renderWeeks(); },()=>{});
-    db.doc("reglages/profil").onSnapshot(s=>{ const v=s&&s.data&&s.data(); if(v){ Object.assign(S.prefs,JSON.parse(JSON.stringify(v))); savePrefsLocal(); $("#pl300-ok").checked=!!S.prefs.pl300; renderCap(); renderTodo(); } },()=>{}); });
+    db.doc("reglages/profil").onSnapshot(s=>{ const v=s&&s.data&&s.data(); if(v){ Object.assign(S.prefs,JSON.parse(JSON.stringify(v))); savePrefsLocal(); if($("#pl300-ok")) $("#pl300-ok").checked=!!S.prefs.pl300; renderCap(); renderTodo(); } },()=>{}); });
 })();
 })();
 </script>

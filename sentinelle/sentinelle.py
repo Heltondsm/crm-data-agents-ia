@@ -22,7 +22,7 @@ LI_H = {"Authorization": "Bearer " + os.environ["LINKEDIN_DMA_TOKEN"].strip(), "
 SB_URL = os.environ.get("SUPABASE_URL", "").rstrip("/") + "/rest/v1/"
 SB_KEY = os.environ.get("SUPABASE_SECRET_KEY", "")
 AGENT = f"Sentinelle LinkedIn, {TODAY:%d/%m}"
-ACTIFS = ("À préparer", "Envoyé", "Relancer", "Suivi flag")
+ACTIFS = ("À contacter", "Contacté", "À relancer", "Suivi flag")
 RECRUTEURS = re.compile(r"recrut|talent|business manager|business developer|ing[ée]nieur d.affaires|account manager|charg[ée] d.affaires|rh\b|human resources|staffing|sourcing", re.I)
 DATA = re.compile(r"data|bi\b|analytics|power bi|analyste|analyst", re.I)
 REFUS = re.compile(r"pas de besoin|pas de poste|ne recrut|malheureusement|pas pour le moment|pas d.opportunit|aucun poste", re.I)
@@ -130,7 +130,7 @@ def main():
         fiches = json.load(open(os.environ["DRY_FICHES"]))
         connues, vus = None, set()
     else:
-        fiches = sb("GET", "candidatures", "select=id,entreprise,poste,statut,type,contacts,linkedin,prochaine_action,notes,date_envoi,relance")
+        fiches = sb("GET", "fiches", "select=id,entreprise,poste,statut,type,contacts,linkedin,prochaine_action,notes,date_envoi,relance")
         connues = {r["url"] for r in sb("GET", "li_relations", "select=url")}
         vus = {r["id"] for r in sb("GET", "li_events", "select=id")}
     par_url = {}
@@ -153,7 +153,7 @@ def main():
 
     def maj(f, champs, raison):
         champs = {**champs, "agent": AGENT, "notion_sync": False, "updated_at": NOW.isoformat()}
-        sb("PATCH", "candidatures", f"id=eq.{f['id']}", champs, "return=minimal")
+        sb("PATCH", "fiches", f"id=eq.{f['id']}", champs, "return=minimal")
         f.update(champs)
         log("  fiche", f["id"], f["entreprise"], "→", raison)
 
@@ -179,7 +179,7 @@ def main():
         fs = par_url.get(k, [])
         if fs:
             for f in fs:
-                if f["statut"] == "À préparer":
+                if f["statut"] == "À contacter":
                     maj(f, {"relance": TODAY.isoformat(), "notes": ((f.get("notes") or "") + f" [Invitation acceptée {TODAY:%d/%m}]").strip()}, "invitation acceptée")
                     alertes.append(f"✅ {nom} ({f['entreprise']}) a accepté : envoie le message 1 aujourd'hui")
                 else:
@@ -188,13 +188,13 @@ def main():
             ent = r.get("Company") or "?"
             recr = bool(RECRUTEURS.search(r.get("Position") or ""))
             ville, lat, lon = geo_entreprise(ent) if ent != "?" else (None, None, None)
-            body = {"entreprise": ent, "poste": "Prospection LinkedIn · CDI Data Analyst" if recr else "Prospection LinkedIn · réseau",
-                    "type": "🏢 Démarchage ESN" if recr else "🤝 Réseau", "piste": "💼 CDI / CDD Data Analyst", "canal": "LinkedIn",
-                    "statut": "À préparer", "relance": TODAY.isoformat(), "contacts": f"{nom} ({r.get('Position') or '?'})", "linkedin": r.get("URL"),
+            body = {"entreprise": ent, "poste": "Prospection directe" if recr else "Partenaire",
+                    "type": "🏢 Prospection directe" if recr else "🤝 Partenaire", "piste": "💼 Grands comptes", "canal": "LinkedIn",
+                    "statut": "À contacter", "relance": TODAY.isoformat(), "contacts": f"{nom} ({r.get('Position') or '?'})", "linkedin": r.get("URL"),
                     "prochaine_action": "Nouvelle relation LinkedIn : choisis le message 1 dans le playbook (catégorie " + ("A ou B" if recr else "D, pair data") + ")",
                     "notes": f"Fiche créée par la Sentinelle : relation acceptée le {co:%d/%m}." if co else "Fiche créée par la Sentinelle.",
                     "agent": AGENT, "notion_sync": False, "ville": ville, "lat": lat, "lon": lon}
-            sb("POST", "candidatures", "", body, "return=minimal")
+            sb("POST", "fiches", "", body, "return=minimal")
             crees += 1
             alertes.append(f"🆕 Nouvelle relation : {nom}, {r.get('Position')} chez {ent} (fiche créée)")
     resume.append(f"{len(rel)} relations, {len(nouvelles)} nouvelles, {crees} fiches créées")
@@ -251,7 +251,7 @@ def main():
         if len(cand) == 1:
             f = cand[0]
             neg = bool(REFUS.search(n["extrait"]))
-            maj(f, {"statut": "Réponse positive", "relance": TODAY.isoformat(),
+            maj(f, {"statut": "Intéressé", "relance": TODAY.isoformat(),
                     "prochaine_action": f"💬 Réponse LinkedIn du {quand:%d/%m} : " + ("à lire, elle semble négative : remercie et demande si tu peux revenir dans un mois" if neg else "propose un appel de 10 minutes"),
                     "notes": ((f.get("notes") or "") + f" [Réponse LinkedIn {quand:%d/%m} : « {extrait[:90]} »]").strip()}, "réponse reçue")
             sb("PATCH", "li_events", f"id=eq.{urllib.parse.quote(n['id'], safe='')}", {"fiche_id": f["id"], "traite": True}, "return=minimal")

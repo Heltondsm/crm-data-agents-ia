@@ -8,7 +8,7 @@
 ![GitHub Actions (CI/CD)](https://img.shields.io/badge/GitHub%20Actions%20%28CI%2FCD%29-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 ![Tests](https://github.com/Heltondsm/crm-data-agents-ia/actions/workflows/ci.yml/badge.svg)
 
-Plus de 120 entreprises et contacts du secteur data à suivre, des dizaines d'offres publiées chaque jour sur plusieurs sites, des échanges sur LinkedIn et par mail. J'ai construit un CRM qui rassemble tout au même endroit : **une base PostgreSQL alimentée par des API, du code planifié pour ce qui est prévisible, et 9 agents IA spécialisés seulement là où il faut comprendre du texte.**
+Plus de 120 entreprises et contacts du secteur data à suivre, des dizaines d'opportunités publiées chaque jour sur plusieurs sites, des échanges sur LinkedIn et par mail. J'ai construit un CRM qui rassemble tout au même endroit : **une base PostgreSQL alimentée par des API, du code planifié pour ce qui est prévisible, et 9 agents IA spécialisés seulement là où il faut comprendre du texte.**
 
 ![Vue d'ensemble (données fictives)](captures/01-vue-ensemble.png)
 
@@ -18,18 +18,18 @@ Plus de 120 entreprises et contacts du secteur data à suivre, des dizaines d'of
 
 J'avais d'abord mesuré le marché de l'emploi data avec un pipeline Python ([job-market-pipeline](https://github.com/Heltondsm/job-market-pipeline) : 787 offres et 1 135 entreprises, API France Travail et INSEE Sirene). Restait à exploiter ces informations au quotidien.
 
-Sans outil, elles se dispersent : une réponse reçue sur LinkedIn passe inaperçue, une relance part trop tard, une bonne offre se perd dans la masse. Le besoin : **une seule source de vérité**, à jour sans saisie manuelle, et une vue claire chaque matin.
+Sans outil, elles se dispersent : une réponse reçue sur LinkedIn passe inaperçue, une relance part trop tard, une bonne opportunité se perd dans la masse. Le besoin : **une seule source de vérité**, à jour sans saisie manuelle, et une vue claire chaque matin.
 
 ---
 
 ## 🎯 Ce que j'ai fait
 
 - Écrit le processus à la main et je l'ai fait tourner plusieurs semaines **avant** d'automatiser quoi que ce soit
-- Modélisé une base **PostgreSQL** de 7 tables : fiches entreprises et contacts, offres, messages, relations, publications, indicateurs hebdomadaires, journal des traitements
+- Modélisé une base **PostgreSQL** de 7 tables : fiches entreprises et contacts, opportunités, messages, relations, publications, indicateurs hebdomadaires, journal des traitements
 - Écrit en **Python** la collecte de l'activité LinkedIn (API Member Data Portability), planifiée trois fois par jour avec **GitHub Actions**
 - Rattaché automatiquement chaque message reçu à la bonne fiche : par le profil, puis par le prénom dans la conversation
 - Géolocalisé chaque siège avec l'**API de l'annuaire des entreprises** pour les placer sur une carte
-- Orchestré **9 agents IA (Claude)** planifiés dans le cloud, chacun avec un rôle, des consignes écrites et un journal : noter les offres, trier les mails, préparer les relances et les entretiens ([liste complète](agents/README.md))
+- Orchestré **9 agents IA (Claude)** planifiés dans le cloud, chacun avec un rôle, des consignes écrites et un journal : noter les opportunités, trier les mails, préparer les relances et les rendez-vous ([liste complète](agents/README.md))
 - Construit une **application de pilotage** (JavaScript, d3.js) : vue d'ensemble, pipeline, carte, recherche globale
 
 ---
@@ -37,11 +37,11 @@ Sans outil, elles se dispersent : une réponse reçue sur LinkedIn passe inaper�
 ## 🏗️ Architecture
 
 ```
-Sources (API LinkedIn, Gmail, sites d'offres)
+Sources (API LinkedIn, Gmail, sites publics)
         ↓
 Code planifié (Python, GitHub Actions) : collecte, rapprochement, alertes
         ↓
-Base PostgreSQL (Supabase) : fiches, offres, messages, historique
+Base PostgreSQL (Supabase) : fiches, opportunités, messages, historique
         ↓
 9 agents IA (Claude) : lire, noter, classer, préparer
         ↓
@@ -53,7 +53,7 @@ Moi : j'analyse, je décide, j'écris. Je mesure ce qui marche chaque semaine.
 | Collecter relations, messages et publications LinkedIn | Code Python planifié | Toujours la même règle : pas besoin d'IA |
 | Rattacher un message à la bonne fiche | Code Python | Un rapprochement, pas une interprétation |
 | Placer chaque entreprise sur la carte | Code Python + API publique | Une simple recherche |
-| Lire une offre et la noter sur 100 | Agent IA | Il faut comprendre un texte libre |
+| Lire une opportunité et la noter sur 100 | Agent IA | Il faut comprendre un texte libre |
 | Classer un mail reçu | Agent IA | Idem |
 | Décider, écrire et envoyer | Moi | Rien ne part sans ma relecture |
 
@@ -63,13 +63,13 @@ Moi : j'analyse, je décide, j'écris. Je mesure ce qui marche chaque semaine.
 
 ### 1️⃣ Une vue claire chaque matin
 
-Les relances du jour, les réponses à traiter et les meilleures offres, sans rien chercher. **Chaque échange rattaché automatiquement à sa fiche**, plus de 120 entreprises suivies sur une carte.
+Les relances du jour, les réponses à traiter et les meilleures opportunités, sans rien chercher. **Chaque échange rattaché automatiquement à sa fiche**, plus de 120 entreprises suivies sur une carte.
 
 ### 2️⃣ Les entreprises sur une carte
 
 ![Carte (données fictives)](captures/02-carte.png)
 
-Les sièges des entreprises et les offres sur l'Île-de-France, avec la distance au domicile et un filtre par statut.
+Les sièges des entreprises et les opportunités sur l'Île-de-France, avec la distance au domicile et un filtre par statut.
 
 ### 3️⃣ Un pipeline qu'on pilote
 
@@ -77,9 +77,9 @@ Les sièges des entreprises et les offres sur l'Île-de-France, avec la distance
 
 Un tableau par statut, des filtres par date de relance, une fiche détaillée modifiable. Chaque changement est enregistré dans la base.
 
-### 4️⃣ Les offres notées et regroupées
+### 4️⃣ Les opportunités notées et regroupées
 
-![Offres (données fictives)](captures/04-offres.png)
+![Opportunités (données fictives)](captures/04-offres.png)
 
 ---
 
@@ -102,7 +102,7 @@ Python · PostgreSQL (Supabase, cloud) · SQL · GitHub Actions (CI/CD, tâches 
 
 ## ▶️ Lancer la démo
 
-Ouvrir `app/demo.html` dans un navigateur : l'application tourne sur **60 entreprises et 36 offres entièrement fictives** (connexion internet nécessaire pour d3.js). Pour régénérer les données :
+Ouvrir `app/demo.html` dans un navigateur : l'application tourne sur **60 entreprises et 36 opportunités entièrement fictives** (connexion internet nécessaire pour d3.js). Pour régénérer les données :
 
 ```bash
 python3 app/demo/generer_donnees.py
@@ -121,7 +121,7 @@ app/cockpit.html            l'application de pilotage
 app/demo.html               la même application sur données fictives
 app/demo/                   génération des données fictives
 agents/                     rôle de chaque agent IA et modèle de consignes
-captures/                   vue d'ensemble, carte, pipeline, offres
+captures/                   vue d'ensemble, carte, pipeline, opportunités
 tests/                      tests automatiques lancés à chaque push
 .github/workflows/ci.yml    intégration continue (GitHub Actions)
 ```
@@ -144,7 +144,7 @@ tests/                      tests automatiques lancés à chaque push
 
 ### Restitution
 - ✅ Application de pilotage : indicateurs, pipeline, carte, recherche globale
-- ✅ Mesure chaque semaine de ce qui marche, et contrôle de la note des offres face aux décisions réelles
+- ✅ Mesure chaque semaine de ce qui marche, et contrôle de la note des opportunités face aux décisions réelles
 
 ---
 

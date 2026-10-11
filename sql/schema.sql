@@ -2,13 +2,13 @@
 -- Les accès passent par la clé secrète côté serveur (GitHub Actions) ou par le connecteur MCP :
 -- la sécurité par ligne (RLS) est activée et aucune politique publique n'est ouverte.
 
-create table candidatures (
+create table fiches (
   id bigserial primary key,
   notion_page_id text unique,          -- miroir Notion (facultatif)
   entreprise text not null,
   poste text,
-  statut text,                         -- À préparer, Envoyé, Relancer, Réponse positive, Entretien, Offre, Refus, Abandon
-  type text,                           -- Candidature, Démarchage, Spontanée, Réseau
+  statut text,                         -- À contacter, Contacté, À relancer, Intéressé, Rendez-vous, Gagné, Perdu, Abandonné
+  type text,                           -- Entrant, Prospection directe, Recommandation, Partenaire
   piste text,
   canal text,
   chances text,
@@ -28,18 +28,18 @@ create table candidatures (
   updated_at timestamptz default now(),
   notion_sync boolean default false
 );
-create index on candidatures (statut);
-create index on candidatures (relance);
+create index on fiches (statut);
+create index on fiches (relance);
 
 create table offres (
   id bigserial primary key,
   cle text unique,                     -- « source|identifiant » : évite les doublons
   titre text, entreprise text, lieu text, source text,
   publiee_le date, score int, points_forts text, vigilance text, url text,
-  statut text default 'Nouvelle',      -- Nouvelle, Vue, Ajoutée au pipeline, Écartée (sert à évaluer la note)
+  statut text default 'Nouvelle',      -- opportunités : Nouvelle, Vue, Ajoutée au pipeline, Écartée (sert à évaluer la note)
   trouvee_le date default current_date,
   extrait text, lat double precision, lon double precision,
-  flags jsonb default '{}'::jsonb      -- junior, bac5, exp, pbi, sql, dbt…
+  flags jsonb default '{}'::jsonb      -- besoins repérés : pbi, sql, dbt…
 );
 create index on offres (score desc);
 
@@ -66,7 +66,7 @@ create table li_posts (                -- publications prévues : vérification 
   statut text default 'prévu', note text, created_at timestamptz default now()
 );
 
-alter table candidatures enable row level security;
+alter table fiches enable row level security;
 alter table offres enable row level security;
 alter table journal_agents enable row level security;
 alter table semaines enable row level security;

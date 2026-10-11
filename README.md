@@ -7,7 +7,7 @@
 ![Claude](https://img.shields.io/badge/Agents%20IA-Claude-D97757?style=flat-square)
 ![d3.js](https://img.shields.io/badge/d3.js-F9A03C?style=flat-square&logo=d3dotjs&logoColor=white)
 
-Plus de 120 entreprises et contacts du secteur data à suivre, des dizaines d'offres publiées chaque jour sur plusieurs sites, des échanges sur LinkedIn et par mail. J'ai construit un CRM qui rassemble tout au même endroit : **une base PostgreSQL alimentée par des API, du code planifié pour ce qui est prévisible, et des agents IA seulement là où il faut comprendre du texte.**
+Plus de 120 entreprises et contacts du secteur data à suivre, des dizaines d'offres publiées chaque jour sur plusieurs sites, des échanges sur LinkedIn et par mail. J'ai construit un CRM qui rassemble tout au même endroit : **une base PostgreSQL alimentée par des API, du code planifié pour ce qui est prévisible, et 9 agents IA spécialisés seulement là où il faut comprendre du texte.**
 
 ![Vue d'ensemble (données fictives)](captures/01-vue-ensemble.png)
 
@@ -28,7 +28,7 @@ Sans outil, elles se dispersent : une réponse reçue sur LinkedIn passe inaper�
 - Écrit en **Python** la collecte de l'activité LinkedIn (API Member Data Portability), planifiée trois fois par jour avec **GitHub Actions**
 - Rattaché automatiquement chaque message reçu à la bonne fiche : par le profil, puis par le prénom dans la conversation
 - Géolocalisé chaque siège avec l'**API de l'annuaire des entreprises** pour les placer sur une carte
-- Confié aux **agents IA (Claude)** les seules tâches de lecture : noter chaque offre sur 100 avec une grille écrite à l'avance, classer les mails reçus
+- Orchestré **9 agents IA (Claude)** planifiés dans le cloud, chacun avec un rôle, des consignes écrites et un journal : noter les offres, trier les mails, préparer les relances et les entretiens ([liste complète](agents/README.md))
 - Construit une **application de pilotage** (JavaScript, d3.js) : vue d'ensemble, pipeline, carte, recherche globale
 
 ---
@@ -42,7 +42,7 @@ Code planifié (Python, GitHub Actions) : collecte, rapprochement, alertes
         ↓
 Base PostgreSQL (Supabase) : fiches, offres, messages, historique
         ↓
-Agents IA (Claude) : lire, noter, classer
+9 agents IA (Claude) : lire, noter, classer, préparer
         ↓
 Moi : j'analyse, je décide, j'écris. Je mesure ce qui marche chaque semaine.
 ```
@@ -94,7 +94,7 @@ Un tableau par statut, des filtres par date de relance, une fiche détaillée mo
 
 ## 🛠️ Technologies utilisées
 
-Python · PostgreSQL (Supabase) · SQL · GitHub Actions · API REST (LinkedIn, annuaire des entreprises) · JavaScript · d3.js · Claude Code (agents, connecteurs MCP)
+Python · PostgreSQL (Supabase, cloud) · SQL · GitHub Actions · API REST (LinkedIn, annuaire des entreprises) · JavaScript · d3.js · data visualisation · Claude Code · IA agentique (9 agents, LLM, connecteurs MCP)
 
 ---
 
@@ -131,7 +131,8 @@ captures/                   vue d'ensemble, carte, pipeline, offres
 - ✅ Collecte par API REST avec gestion des quotas et reprise là où le dernier passage s'est arrêté
 - ✅ Rapprochement automatique de sources différentes (messages, relations, fiches)
 
-### Automatisation et IA
+### IA agentique et automatisation
+- ✅ Système de 9 agents IA (LLM, connecteurs MCP), chacun avec un rôle et des garde-fous
 - ✅ Traitements planifiés avec GitHub Actions, clés dans les secrets
 - ✅ Partage du travail entre code déterministe et IA, justifié tâche par tâche
 - ✅ Agents IA encadrés : consignes écrites, garde-fous, journal de chaque passage

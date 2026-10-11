@@ -62,7 +62,7 @@ Moi : j'analyse, je décide, j'écris. Je mesure ce qui marche chaque semaine.
 
 ### 1️⃣ Une vue claire chaque matin
 
-Les relances du jour, les réponses à traiter et les meilleures offres, sans rien chercher. **2 168 relations LinkedIn analysées**, chaque échange rattaché à sa fiche.
+Les relances du jour, les réponses à traiter et les meilleures offres, sans rien chercher. **745 relations LinkedIn analysées**, chaque échange rattaché à sa fiche.
 
 ### 2️⃣ Les entreprises sur une carte
 

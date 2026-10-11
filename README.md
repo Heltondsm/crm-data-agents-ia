@@ -37,15 +37,17 @@ Sans outil, elles se dispersent : une réponse reçue sur LinkedIn passe inaper�
 ## 🏗️ Architecture
 
 ```
-Sources (API LinkedIn, Gmail, sites publics)
-        ↓
-Code planifié (Python, GitHub Actions) : collecte, rapprochement, alertes
-        ↓
-Base PostgreSQL (Supabase) : fiches, opportunités, messages, historique
-        ↓
-9 agents IA (Claude) : lire, noter, classer, préparer
-        ↓
-Moi : j'analyse, je décide, j'écris. Je mesure ce qui marche chaque semaine.
+ Code planifié (Python, GitHub Actions)        9 agents IA (Claude)
+ API LinkedIn, annuaire des entreprises        mails, sites publics
+ collecte, rapprochement, alertes              notent, trient, préparent
+                 │                                     │
+                 └──────────────────┬──────────────────┘
+                                    ↓
+            Base PostgreSQL (Supabase) : tout arrive ici
+                                    ↓
+       Application de pilotage : pipeline, carte, recherche, indicateurs
+                                    ↓
+          Moi : j'analyse, je décide, j'écris, je mesure chaque semaine
 ```
 
 | Tâche | Qui la fait | Pourquoi |

@@ -163,6 +163,7 @@ Data Analyst | 10 ans d'expérience business (retail et e-commerce)
 
 ## 🔗 Autres projets
 
+- [Pipeline Analytics Engineering : quels outils data enseigner, et où ?](https://github.com/Heltondsm/job-market-analytics), Airflow, dbt et BigQuery, 2 110 offres modélisées et 32 tests
 - [Pipeline de collecte par API](https://github.com/Heltondsm/job-market-pipeline), France Travail et INSEE Sirene, 1 135 entreprises collectées en 14 secondes
 - [Portefeuille de 104 projets dans 52 pays](https://github.com/Heltondsm/powerbi-portefeuille-projets-rls), Power BI, sécurité au niveau des lignes sur 3 rôles
 - [Pipeline dbt : profils sociodémographiques](https://github.com/Heltondsm/dbt-demographics-pipeline), Snowflake et DuckDB, 26 tests, reproductible en une commande
